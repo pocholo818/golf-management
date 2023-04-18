@@ -19,4 +19,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/members/course', [App\Http\Controllers\HomeController::class, 'index'])->name('course');
+
+
+Route::get('/members/appointment', [App\Http\Controllers\AppointmentController::class, 'index'])->name('appointment');
+Route::get('/members/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice');
+Route::get('/members/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
