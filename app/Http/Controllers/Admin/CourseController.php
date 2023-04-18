@@ -12,7 +12,10 @@ class CourseController extends Controller
     //
     public function index()
     {
-        return view('admin.course');
+// eto
+        $course = Course::all();
+        return view ('admin.course')->with('courses', $course);
+
     }
 
     // Add Course
@@ -26,7 +29,7 @@ class CourseController extends Controller
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $photo->getClientOriginalExtension();
             $image = $filename.'_'.time().'.'.$extension;
-            $path = $photo->move('public/images', $image);
+            $path = $photo->move('public/course', $image);
 
         }else{
             $image = 'default.png';
@@ -42,33 +45,25 @@ class CourseController extends Controller
             ->with('success', 'Course Created!');
     }
 
-
-    // View
-    public function show($id)
-    {
-        $courses = Course::find($id);
-        return view('web.article.view')->with('articles', $articles);
-    }
-
     // View Edit
-    public function edit($id)
+    public function edit($course_id)
     {
-        $courses = Course::find($id);
-        return view('web.article.update', compact('articles'));
+        $courses = Course::find($course_id);
+        return view('admin.update', compact('courses'));
     }
     //Update
-    public function update(Request $request, $id)
+    public function update(Request $request, $course_id)
     {
-        $courses = Course::find($id);
+        $courses = Course::find($course_id);
         $input = $request->all();
         $courses->update($input);
-        return redirect('web.article.home')->with('flash_message', 'Article Updated!');
+        return redirect('admin.course')->with('flash_message', 'Course Updated!');
     }
 
 
-    public function destroy($id)
+    public function destroy($course_id)
     {
-        Course::destroy($id);
-        return redirect('web.article.home')->with('flash_message', 'Article deleted!');
+        Course::destroy($course_id);
+        return redirect('admin.course')->with('flash_message', 'Course removed!');
     }
 }
