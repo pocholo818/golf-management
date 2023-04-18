@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('payment_method', 48);
             $table->string('status',32);
             $table->integer('user_id');
-            $table->timestamps();
+            // $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
     }
 
