@@ -13,8 +13,8 @@ class CourseController extends Controller
     public function index()
     {
 // eto
-        $course = Course::all();
-        return view ('admin.course')->with('courses', $course);
+    $courses = Course::all();
+    return view('admin.course',['courses' => $courses]);
 
     }
 
@@ -41,8 +41,11 @@ class CourseController extends Controller
         $courses->photo = $image;
         $courses->save();
 
-        return redirect()->route('admin.course')
-            ->with('success', 'Course Created!');
+        $courses = Course::all();
+    return redirect()->route('course.index', compact('courses'))
+    ->with('success', 'Course created!');;
+
+        // return back()->with('success', 'Course created successfully.');
     }
 
     // View Edit
@@ -57,13 +60,17 @@ class CourseController extends Controller
         $courses = Course::find($course_id);
         $input = $request->all();
         $courses->update($input);
-        return redirect('admin.course')->with('flash_message', 'Course Updated!');
+        return redirect('index')->with('flash_message', 'Course Updated!');
     }
 
+    public function show($id)
+    {
+        //
+    }
 
     public function destroy($course_id)
     {
         Course::destroy($course_id);
-        return redirect('admin.course')->with('flash_message', 'Course removed!');
+        return redirect('course')->with('flash_message', 'Course removed!');
     }
 }
