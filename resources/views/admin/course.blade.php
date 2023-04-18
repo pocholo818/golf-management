@@ -8,7 +8,7 @@
                         <div class="col-lg-12">
                             <div class="card p-4 border mt-4">
                                 <div class="row">
-                                    <h5>Members Page is working</h5>
+                                    <h5>Course Page is working</h5>
                                 </div>
 
                             </div>
