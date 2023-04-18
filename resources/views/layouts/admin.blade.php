@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}" />
 
         {{-- boostrap CDN --}}
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
 
 
     </head>
@@ -81,7 +81,6 @@
 
                 <div class="d-flex align-items-center">
 
-
                     <div class="dropdown ms-sm-3 header-item topbar-user" >
                         <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
@@ -109,6 +108,8 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </header>

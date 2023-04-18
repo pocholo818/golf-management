@@ -39,7 +39,7 @@
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Understood</button>
+                                        <button type="button" class="btn btn-success">Understood</button>
                                     </div>
                                 </div>
                                 </div>
@@ -64,26 +64,6 @@
                                             <td>1</td>
                                             <td>500</td>
                                             <td>5</td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary">Edit</button>
-                                                <button type="button" class="btn btn-danger">Delete</button>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th scope="row">2</th>
-                                            <td>2</td>
-                                            <td>700</td>
-                                            <td>10</td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary">Edit</button>
-                                                <button type="button" class="btn btn-danger">Delete</button>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th scope="row">3</th>
-                                            <td>3</td>
-                                            <td>1000</td>
-                                            <td>15</td>
                                             <td>
                                                 <button type="button" class="btn btn-primary">Edit</button>
                                                 <button type="button" class="btn btn-danger">Delete</button>
