@@ -14,11 +14,13 @@ return new class extends Migration
         Schema::create('course', function (Blueprint $table) {
             $table->id('course_id');
             $table->string('name', 128);
-            $table->float('square_meter');
+            // $table->float('square_meter');
             $table->float('price');
-            $table->integer('limit');
-            $table->string('open_days', 32);
-            $table->timestamps();
+            $table->integer('capacity');
+            // $table->string('open_days', 32);
+            // $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
     }
 

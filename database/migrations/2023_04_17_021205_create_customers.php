@@ -18,7 +18,9 @@ return new class extends Migration
             $table->string('mobile_number', 11);
             $table->string('email', 96);
             $table->string('password');
-            $table->timestamps();
+            // $table->timestamps();
+            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
     }
 
