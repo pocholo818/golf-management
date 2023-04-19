@@ -20,7 +20,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="{{ url('admin/course') }}" method="post" enctype="multipart/form-data" class="row g-3">
+                                        <form action="{{ url(route('course.store')) }}" method="post" enctype="multipart/form-data" class="row g-3">
                                             {!! csrf_field() !!}
                                             <div class="">
                                                 <label for="exampleFormControlInput1" class="form-label">Enter Golf Course Number</label>
@@ -65,7 +65,7 @@
                                         </thead>
 
                                         <tbody>
-                                            @foreach($course as $item)
+                                            @foreach($courses as $item)
                                           <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>

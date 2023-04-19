@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+
+use App\Http\Controllers\Admin\CourseController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,36 +23,15 @@ Route::get('/', function () {
 Auth::routes();
 
 // Eto
-Route::resource('/course', App\Http\Controllers\Admin\CourseController::class);
-Route::get('/admin/course', [App\Http\Controllers\Admin\CourseController::class, 'index'])->name('course');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Route::post('/courses', [CourseController::class, 'store'])->name('course.store');
+Route::get('/courses', [CourseController::class, 'index'])->name('course.index');
 
 Route::get('/admin/course', [App\Http\Controllers\HomeController::class, 'index'])->name('course');
 
-
 Route::get('/members/appointment', [App\Http\Controllers\AppointmentController::class, 'index'])->name('appointment');
+
 Route::get('/members/invoice', [App\Http\Controllers\InvoiceController::class, 'index'])->name('invoice');
+
 Route::get('/members/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile');
 
 
