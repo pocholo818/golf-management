@@ -1,0 +1,25 @@
+.card-body{
+    border: 1px solid black;
+    border-radius: 5px;
+    text-align: center;
+
+    .modal{
+        text-align: center;
+    }
+
+    .form-group{
+        text-align: center;
+    }
+
+    .col-md-8{
+
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .mt{
+        height: 36px;
+    }
+
+}

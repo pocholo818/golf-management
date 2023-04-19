@@ -24,6 +24,7 @@
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}" />
 
 
+
     </head>
     <style>
         .menu-title{
