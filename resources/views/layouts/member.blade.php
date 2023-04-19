@@ -133,7 +133,7 @@
                             <ul class="navbar-nav" id="navbar-nav">
                                 <li class="menu-title text-white"><span data-key="t-menu">Menu</span></li>
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link text-white" href="{{ route('course') }}">
+                                    <a class="nav-link menu-link text-white" href="{{ route('bookcourse') }}">
                                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Golf Course</span>
                                     </a>
                                 </li>

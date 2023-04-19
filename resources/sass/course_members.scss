@@ -1,5 +1,5 @@
 .card-body{
-    border: 1px solid black;
+    // border: 1px solid black;
     border-radius: 5px;
     text-align: center;
 
@@ -20,6 +20,12 @@
 
     .mt{
         height: 36px;
+    }
+
+    .header{
+        margin-top:100px;
+        margin-left:50px;
+        font-size:30px;
     }
 
 }

@@ -10,6 +10,6 @@ class TransactionController extends Controller
     //
     public function index()
     {
-        return view('admin.invoice');
+        return view('admin.transactions');
     }
 }
