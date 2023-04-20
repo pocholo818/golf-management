@@ -32,6 +32,10 @@ Route::get('/', function () {
 Route::get('/user', function () {
     return view('members/Auth/login');
 });
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 
 Auth::routes();
 
