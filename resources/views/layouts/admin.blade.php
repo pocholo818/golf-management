@@ -212,6 +212,7 @@
             <script src="{{ asset('libs/aos/aos.js') }}"></script>
             <!-- prismjs plugin -->
             <script src="{{ asset('/libs/prismjs/prism.js') }}"></script>
+            <script src="{{asset('/libs/gridjs/gridjs.umd.js')}}"></script>
             <script src="{{ asset('/js/pages/animation-aos.init.js') }}"></script>
              <!-- App js -->
             <script src="{{ asset('js/app.js') }}"></script>

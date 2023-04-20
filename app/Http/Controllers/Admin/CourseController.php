@@ -39,7 +39,6 @@ class CourseController extends Controller
         $courses->photo = $image;
         $courses->save();
 
-        $courses = Course::all();
     return redirect()->route('course.index', compact('courses'))
     ->with('success', 'Course created!');;
 

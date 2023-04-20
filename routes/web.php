@@ -4,6 +4,15 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Members\BookcourseController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Members\AppointmentController;
+use App\Http\Controllers\Members\InvoiceController;
+use App\Http\Controllers\Members\ProfileController;
+use App\Http\Controllers\Admin\MemberController;
+use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Members\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +29,13 @@ use App\Http\Controllers\Admin\CourseController;
 //     return view('home');
 // });
 Route::get('/', function () {
+    return view('auth/login');
+});
+
+Route::get('/user', function () {
+    return view('members/Auth/login');
+});
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -36,19 +52,42 @@ Route::get('/members/login', function (){
 
 
 // Members Book Course Routes
-Route::get('/members/bookcourse', [App\Http\Controllers\Members\BookcourseController::class, 'index'])->name('bookcourse');
+Route::get('/members/bookcourse', [BookcourseController::class, 'index'])->name('bookcourse');
 Route::get('/bookcourses', [BookcourseController::class, 'index'])->name('bookcourse.index');
 
+
+Route::resource('/members', MemberController::class);
+Route::get('/admin/members', [MemberController::class, 'index'])->name('members');
+
+Route::resource('/memberlogin', LoginController::class);
+
+// Route::namespace('members\Auth')->group(function () {
+//     Route::get('login', 'LoginController@showLoginForm')->name('login');
+//     Route::post('login', 'LoginController@login')->name('login.store');
+// });
+
+// Route::group(['prefix' => 'admin'], function () {
+//     Route::get('/', ['as' => 'index', 'uses' => "MemberController@index"]);
+//     Route::post('members', ['as' => 'store', 'uses' => "MemberController@store"]);
+//     Route::put('members/{course_id}', ['as' => 'update', 'uses' => "MemberController@update"]);
+//     Route::delete('members/{course_id}', ['as' => 'destroy', 'uses' => "MemberController@destroy"]);
+// });
+
+// Route::group(['prefix' => 'admin'], function () {
+//     Route::resource('users', 'Admin\UserController');
+// });
+
+
 // Sample Only
-Route::get('/admin/course', [App\Http\Controllers\HomeController::class, 'index'])->name('course');
+Route::get('/admin/course', [HomeController::class, 'index'])->name('course');
 
 
-Route::get('/members/appointment', [App\Http\Controllers\Members\AppointmentController::class, 'index'])->name('appointment');
-Route::get('/members/invoice', [App\Http\Controllers\Members\InvoiceController::class, 'index'])->name('invoice');
-Route::get('/members/profile', [App\Http\Controllers\Members\ProfileController::class, 'index'])->name('profile');
+Route::get('/members/appointment', [AppointmentController::class, 'index'])->name('appointment');
+Route::get('/members/invoice', [InvoiceController::class, 'index'])->name('invoice');
+Route::get('/members/profile', [ProfileController::class, 'index'])->name('profile');
 
 
-Route::get('/admin/members', [App\Http\Controllers\Admin\MemberController::class, 'index'])->name('members');
-Route::get('/admin/appointments', [App\Http\Controllers\Admin\AppointmentController::class, 'index'])->name('appointments');
-Route::get('/admin/schedules', [App\Http\Controllers\Admin\ScheduleController::class, 'index'])->name('schedules');
-Route::get('/admin/transactions', [App\Http\Controllers\Admin\TransactionController::class, 'index'])->name('transactions');
+
+Route::get('/admin/appointments', [AppointmentController::class, 'index'])->name('appointments');
+Route::get('/admin/schedules', [ScheduleController::class, 'index'])->name('schedules');
+Route::get('/admin/transactions', [TransactionController::class, 'index'])->name('transactions');
