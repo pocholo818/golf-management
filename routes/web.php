@@ -28,9 +28,13 @@ use App\Http\Controllers\Members\LoginController;
 // Route::get('/', function () {
 //     return view('home');
 // });
+
 Route::get('/', function () {
-    return view('auth/login');
+    return view('welcome');
 });
+// Route::get('/', function () {
+//     return view('auth/login');
+// });
 
 Route::get('/user', function () {
     return view('members/Auth/login');
