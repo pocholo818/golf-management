@@ -12,10 +12,8 @@ class CourseController extends Controller
     //
     public function index()
     {
-// eto
-    $courses = Course::all();
-    return view('admin.course',['courses' => $courses]);
-
+        $courses = Course::all();
+        return view('admin.course',['courses' => $courses]);
     }
 
     // Add Course
@@ -60,7 +58,7 @@ class CourseController extends Controller
         $courses = Course::find($course_id);
         $input = $request->all();
         $courses->update($input);
-        return redirect('index')->with('flash_message', 'Course Updated!');
+        return redirect('admin/course')->with('flash_message', 'Course Updated!');
     }
 
     public function show($id)
@@ -71,6 +69,6 @@ class CourseController extends Controller
     public function destroy($course_id)
     {
         Course::destroy($course_id);
-        return redirect('course')->with('flash_message', 'Course removed!');
+        return redirect('admin/course')->with('flash_message', 'Course removed!');
     }
 }

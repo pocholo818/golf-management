@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Members;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class CourseController extends Controller
+class ProfileController extends Controller
 {
     //
     public function index()
     {
-        return view('admin.course');
+        return view('members.profile');
     }
 }
