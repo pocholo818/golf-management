@@ -110,10 +110,10 @@
                                           <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>
-                                                @if(isset($item->photo))
+                                                @if($item->photo)
                                                 <img src="{{ asset('public/course/'.$item->photo) }}" class="img-thumbnail" style="margin-left: auto; margin-right: auto; display: block; height:200px; width:200px;">
                                                 @else
-                                                    <img src="{{ asset('public/course/default.png') }}" class="img-thumbnail" style="margin-left: auto; margin-right: auto; display: block;">
+                                                    <img src="{{ asset('images/no_image.jpg') }}" class="img-thumbnail default" style="margin-left: auto; margin-right: auto; display: block;">
                                                 @endif
                                             </td>
                                             <td>{{ $item->name }}</td>

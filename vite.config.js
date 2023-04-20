@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/main.js',
                 'resources/sass/course_members.scss',
+                'resources/sass/admin.scss',
             ],
             refresh: true,
         }),
