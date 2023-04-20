@@ -20,26 +20,30 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form>
-                                            <div class="mb-3">
-                                                <h2>Gould Course No. :</h2>
-                                                <input class="form-control" type="number">
-                                                <label class="form-label">Price</label>
-                                                <input class="form-control" type="number" placeholder="Input Price">
+                                        <form action="{{ url(route('course.store')) }}" method="post" enctype="multipart/form-data" class="row g-3">
+                                            {!! csrf_field() !!}
+                                            <div class="">
+                                                <label for="exampleFormControlInput1" class="form-label">Enter Golf Course Number</label>
+                                                <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                            </div>
+                                            <div class="">
+                                                <label for="exampleFormControlInput1" class="form-label">Enter Golf Course Price</label>
+                                                <input type="text" name="price" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                            </div>
+                                            <div class="">
+                                                <label for="exampleFormControlInput1" class="form-label">Enter Golf Course Capacity</label>
+                                                <input type="text" name="capacity" class="form-control" id="exampleFormControlInput1" placeholder="">
+                                            </div>
+                                            <div class="">
+                                                <label for="formFile" class="form-label">Default file input example</label>
+                                                <input type="file" name="photo" step="any" class="form-control">
                                             </div>
 
-                                            <div class="mb-3">
-                                                <label class="form-label">Capacity</label>
-                                                <input class="form-control" type="number" placeholder="Input Number of Capacity">
+                                            <div class="modal-footer">
+                                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                                <button type="submit" class="btn btn-success w-100">Create</button>
                                             </div>
-
-                                            <button type="submit" class="btn btn-primary">Save</button>
                                         </form>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Understood</button>
                                     </div>
                                 </div>
                                 </div>
@@ -52,44 +56,36 @@
                                         <thead>
                                           <tr>
                                             <th scope="col">#</th>
+                                            <th scope="col">Image</th>
                                             <th scope="col">Golf Course Number</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Capacity</th>
                                             <th scope="col">Action</th>
                                           </tr>
                                         </thead>
+
                                         <tbody>
+                                            @foreach($courses as $item)
                                           <tr>
-                                            <th scope="row">1</th>
-                                            <td>1</td>
-                                            <td>500</td>
-                                            <td>5</td>
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>
+                                                @if(isset($item->photo))
+                                                <img src="{{ asset('public/images/'.$item->photo) }}" class="img-thumbnail" style="margin-left: auto; margin-right: auto; display: block; height:200px; width:200px;">
+                                                @else
+                                                    <img src="{{ asset('public/images/default.png') }}" class="img-thumbnail" style="margin-left: auto; margin-right: auto; display: block;">
+                                                @endif
+                                            </td>
+                                            <td>{{ $item->name }}</td>
+                                            <td>{{ $item->price }}</td>
+                                            <td>{{ $item->capacity }}</td>
                                             <td>
                                                 <button type="button" class="btn btn-primary">Edit</button>
                                                 <button type="button" class="btn btn-danger">Delete</button>
                                             </td>
                                           </tr>
-                                          <tr>
-                                            <th scope="row">2</th>
-                                            <td>2</td>
-                                            <td>700</td>
-                                            <td>10</td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary">Edit</button>
-                                                <button type="button" class="btn btn-danger">Delete</button>
-                                            </td>
-                                          </tr>
-                                          <tr>
-                                            <th scope="row">3</th>
-                                            <td>3</td>
-                                            <td>1000</td>
-                                            <td>15</td>
-                                            <td>
-                                                <button type="button" class="btn btn-primary">Edit</button>
-                                                <button type="button" class="btn btn-danger">Delete</button>
-                                            </td>
-                                          </tr>
+                                          @endforeach
                                         </tbody>
+
                                       </table>
                                 </div>
 

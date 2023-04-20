@@ -17,6 +17,7 @@ return new class extends Migration
             // $table->float('square_meter');
             $table->float('price');
             $table->integer('capacity');
+            $table->string('photo');
             // $table->string('open_days', 32);
             // $table->timestamps();
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
