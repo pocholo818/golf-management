@@ -16,10 +16,10 @@ use App\Http\Controllers\Admin\CourseController;
 */
 
 
+// Route::get('/', function () {
+//     return view('home');
+// });
 Route::get('/', function () {
-    return view('home');
-});
-Route::get('/welcome', function () {
     return view('welcome');
 });
 
@@ -30,6 +30,9 @@ Route::post('/courses', [CourseController::class, 'store'])->name('course.store'
 Route::patch('/courses/{course_id}', [CourseController::class, 'update'])->name('course.update');
 Route::delete('/courses/{course_id}', [CourseController::class, 'destroy'])->name('course.destroy');
 Route::get('/courses', [CourseController::class, 'index'])->name('course.index');
+Route::get('/members/login', function (){
+    return view ('auth.members_login');
+});
 
 
 // Members Book Course Routes

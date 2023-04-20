@@ -6,7 +6,10 @@
         <header class="py-5 bg-image-full" style="background-image: url('https://www.numarkgolf.com/wp-content/uploads/sites/5047/2022/10/slider3.png')">
             <div class="text-center my-5">
                 <p class="text-white mb-0 p-5" style="font-size: x-large; font-weight: bold ">INTERNATIONAL GOLF CLUB</p>
-                <button type="button" class="btn btn-primary btn-lg">GET A MEMBERSHIP NOW</button>
+
+                <a href="{{url('/members/login')}}">
+                    <button type="button" class="btn btn-primary btn-lg">SIGN IN!</button>
+                </a>
             </div>
         </header>
         <!-- Content section-->
