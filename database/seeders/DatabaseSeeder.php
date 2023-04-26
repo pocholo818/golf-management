@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             courseSeeder::class,
+            CustomerSeeder::class,
         ]);
     }
 }

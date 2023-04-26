@@ -2,26 +2,36 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Course;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Course;
+use App\Http\Requests\CourseRequest;
 
 class CourseController extends Controller
 {
-    //
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
-    {
-// eto
-    $courses = Course::all();
-    return view('admin.course',['courses' => $courses]);
-
+    { 
+        $courses = Course::all();
+        return view('Admin.Course.index_course',['courses' => $courses]);
+        // return view('Admin.Course.course');
     }
 
-    // Add Course
-    public function store(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
+        return view('Admin.Course.create_course');
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(CourseRequest $request)
+    {
         $photo = $request->file('photo');
 
         if($request->hasFile('photo')){
@@ -35,42 +45,77 @@ class CourseController extends Controller
             $image = 'default.png';
         }
 
-        //
-        $courses = new Course();
-        $courses->fill($request->all());
+        $courses = Course::create([
+            'name' => $request->name,
+            'price' => $request->price,
+            'capacity' => $request->capacity,
+            'photo' => $request->photo,
+        ]);
         $courses->photo = $image;
         $courses->save();
 
-        $courses = Course::all();
-    return redirect()->route('course.index', compact('courses'))
-    ->with('success', 'Course created!');;
+        return redirect()->route('golf_course')->with('success', 'Course created!');
 
         // return back()->with('success', 'Course created successfully.');
     }
 
-    // View Edit
-    public function edit($course_id)
-    {
-        $courses = Course::find($course_id);
-        return view('admin.update', compact('courses'));
-    }
-    //Update
-    public function update(Request $request, $course_id)
-    {
-        $courses = Course::find($course_id);
-        $input = $request->all();
-        $courses->update($input);
-        return redirect('index')->with('flash_message', 'Course Updated!');
-    }
-
-    public function show($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
         //
     }
 
-    public function destroy($course_id)
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
-        Course::destroy($course_id);
-        return redirect('course')->with('flash_message', 'Course removed!');
+        $courses = Course::find($id);
+        // dd($courses);
+        return view('Admin.Course.edit_course',['courses' => $courses]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(CourseRequest $request, string $id)
+    {
+        $photo = $request->file('photo');
+    
+        if ($request->hasFile('photo')) {
+            $filenameWithExt = $photo->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $photo->getClientOriginalExtension();
+            $image = $filename.'_'.time().'.'.$extension;
+            $path = $photo->move('public/course', $image);
+    
+            $courses = Course::find($id);
+            // dd($courses);
+            $old_image_path = public_path().'/public/course/'.$courses->photo;
+            // dd($old_image_path);
+            if (File::exists($old_image_path)) {
+                File::delete($old_image_path);
+            }
+            $courses->photo = $image;
+            $courses->update($request->all());
+            // dd($courses);
+        } else {
+            $courses = Course::findOrFail($id);
+            $courses->update($request->except('photo'));
+        }
+    
+        return redirect()->route('golf_course')->with('success', 'Course updated!');
+    }
+
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        Course::destroy($id);
+        return back()->with('success', 'Successfully deleted');
     }
 }
