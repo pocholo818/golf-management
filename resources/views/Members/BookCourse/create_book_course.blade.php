@@ -1,4 +1,4 @@
-@extends('layouts.member_nav')
+@extends('Layouts.member_nav')
 {{-- @vite(['resources/sass/course_members.scss']) --}}
 
 @section('content')

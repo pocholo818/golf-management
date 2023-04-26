@@ -64,9 +64,9 @@ Route::post('/index', ['as' => 'index', 'uses' => 'Auth\MemberController@store']
 Route::post('/member_logout', ['as' => 'member_logout', 'uses' => 'Auth\MemberController@destroy']);
 
 Route::group(['prefix' => 'member/book_course'], function () {
-    Route::get('/', ['as' => 'book_course', 'uses' => "Members\BookCourseController@index"]);
-    Route::get('/create_book_course/{id}', ['as' => 'create_book_course', 'uses' => "Members\BookCourseController@create"]);
-    Route::post('/store_book_course', ['as' => 'store_book_course', 'uses' => "Members\BookCourseController@store"]);
+    Route::get('/', ['as' => 'book_course', 'uses' => "Members\BookcourseController@index"]);
+    Route::get('/create_book_course/{id}', ['as' => 'create_book_course', 'uses' => "Members\BookcourseController@create"]);
+    Route::post('/store_book_course', ['as' => 'store_book_course', 'uses' => "Members\BookcourseController@store"]);
 });
 
 Route::group(['prefix' => 'member/appointment'], function () {

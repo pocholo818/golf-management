@@ -1,4 +1,4 @@
-@extends('layouts.member_nav')
+@extends('Layouts.member_nav')
 
 @section('content')
 

@@ -35,23 +35,38 @@ class BookcourseController extends Controller
      */
     public function store(AppointmentRequest $request)
     {
-        
-        $request->validated($request->all());
+        // check if same date
+        if(date('Y-m-d') == $request->date){
+            echo "Same date is invalid";
+        }
+        // check if less than current date
+        else if($request->date < date('Y-m-d')){
+            echo "Date is less than the current date";
+        }
+        // check if greater than current date
+        // else if(date('Y', strtotime($request->date)) > date('Y')){
+        //     echo "Date is greater than the current year ";
+        // }
+        // insert
+        else{
+            $request->validated($request->all());
 
-         $appt = Appointment::create([
-            'name' => $request->name,
-            'capacity' => $request->capacity,
-            'date' => $request->date,
-            'time' => $request->time,
-            'guests' => $request->guests,
-            // 'user_id' => auth()->user()->customer_id,
-            'user_id' => auth('member')->user()->customer_id,
-        ]);
-         $appt->save();
-         return redirect()->route('book_course')->with([
-            'success' => 'Appointment created!'
-        ]);
+            $appt = Appointment::create([
+                'name' => $request->name,
+                'capacity' => $request->capacity,
+                'date' => $request->date,
+                'time' => $request->time,
+                'guests' => $request->guests,
+                // 'user_id' => auth()->user()->customer_id,
+                'user_id' => auth('member')->user()->customer_id,
+            ]);
 
+            $appt->save();
+
+            return redirect()->route('book_course')->with([
+                'success' => 'Appointment created!'
+            ]);
+        }
     }
 
     /**
