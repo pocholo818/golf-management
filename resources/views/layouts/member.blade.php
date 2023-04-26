@@ -23,6 +23,10 @@
 
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}" />
 
+<<<<<<< Updated upstream:resources/views/layouts/member.blade.php
+=======
+        {{-- @vite ('resources/sass/course_members.scss') --}}
+>>>>>>> Stashed changes:resources/views/Layouts/member_nav.blade.php
 
     </head>
     <style>
