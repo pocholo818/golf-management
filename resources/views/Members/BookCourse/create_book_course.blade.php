@@ -1,4 +1,4 @@
-@extends('Layouts.member_nav')
+@extends('layouts.member_nav')
 {{-- @vite(['resources/sass/course_members.scss']) --}}
 
 @section('content')
@@ -50,16 +50,6 @@
                         <label for="inputState" style="padding-left: 20px">Capacity {{$courses->capacity}}</label>
                         <input class="form-control mt" type="number" name="capacity" value="{{$courses->capacity}}" readonly  hidden>
                     </div>
-                    {{-- <div class="row" style="margin-top: 5px">
-                    <div class="col-md-6" style="margin-top: 10px">
-                        <label class="mr-sm-2" for="inlineFormCustomSelect">Golf course </label>
-                        <input class="form-control mt" type="text" name="name" value="{{$courses->name}}" readonly hidden>
-                    </div>
-                    <div class="col-md-6" style="margin-top: 10px">
-                        <label class="mr-sm-2" for="inlineFormCustomSelect">Capacity</label>
-                        <input class="form-control mt" type="number" name="capacity" value="{{$courses->capacity}}" readonly  hidden>
-                    </div>
-                    </div> --}}
                     <div class="form-group" style="margin-top: 10px">
                         <label for="inputState">Date</label>
                         <input type="date" class="form-control" name="date" value="{{ old('date') }}" >
@@ -72,16 +62,27 @@
                                 <option value="8:00 A.M - 12:00 P.M" {{ old('time') == '8:00 A.M - 12:00 P.M' ? 'selected' : '' }}>8:00 A.M - 12:00 P.M</option>
                                 <option value="1:00 P.M - 5:00 P.M" {{ old('time') == '1:00 P.M - 5:00 P.M' ? 'selected' : '' }}>1:00 P.M - 5:00 P.M</option>
                             </select>
-                            
+                        </div>
+                        <div class="col-md-6" style="margin-top: 10px">
+                            <label class="mr-sm-2" for="inlineFormCustomSelect">Number of Players</label>
+                            <input class="form-control mt" type="number" name="guests" value="{{ old('guests') }}" oninput="checkCapacity(this)">
+                        </div>
                     </div>
-                    <div class="col-md-6" style="margin-top: 10px">
-                        <label class="mr-sm-2" for="inlineFormCustomSelect">Number of Players</label>
-                        <input class="form-control mt" type="number" name="guests" value="{{ old('guests') }}" >
-                    </div>
-                    
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
+                    </div>
                 </form>
+                                
+                <script>
+                    function checkCapacity(input) {
+                        var capacity = {{$courses->capacity}};
+                        if (input.value > capacity) {
+                            alert("Number of players cannot be greater than the capacity of the course.");
+                            input.value = capacity; // Reset the value to the maximum capacity
+                        }
+                    }
+                    </script>
+                    
+                
                 
 @endsection

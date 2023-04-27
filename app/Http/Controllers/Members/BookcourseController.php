@@ -35,6 +35,7 @@ class BookcourseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+<<<<<<< Updated upstream
     public function store(AppointmentRequest $request)
 {
     $request->validated($request->all());
@@ -69,6 +70,42 @@ class BookcourseController extends Controller
         return redirect()->route('book_course');        
     }
 }
+=======
+     public function store(AppointmentRequest $request)
+    {
+        $request->validated($request->all());
+        // check if same date
+        if(date('Y-m-d') == $request->date){
+            Session::flash('error', 'Same date is invalid');
+            return redirect()->back();
+        }
+        // check if less than current date
+        else if($request->date < date('Y-m-d')){
+            Session::flash('error', 'Date is less than the current date');
+            return redirect()->back();
+        }
+      // check if greater than current date
+            // else if(date('Y', strtotime($request->date)) > date('Y')){
+            //     echo "Date is greater than the current year ";
+            // }
+            // insert
+        else{
+            
+            $appt = Appointment::create([
+                'name' => $request->name,
+                'capacity' => $request->capacity,
+                'date' => $request->date,
+                'time' => $request->time,
+                'guests' => $request->guests,
+                'user_id' => auth('member')->user()->customer_id,
+                'status' => $request->status,
+            ]);
+    
+            Session::flash('success', 'Appointment created!');
+            return redirect()->route('book_course');        
+        }
+    }
+>>>>>>> Stashed changes
     /**
      * Display the specified resource.
      */

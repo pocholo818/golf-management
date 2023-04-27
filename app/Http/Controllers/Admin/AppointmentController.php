@@ -10,6 +10,9 @@ use App\Models\BookCourse;
 use App\Models\Appointment;
 use App\Http\Requests\AppointmentRequest;
 use Illuminate\Support\Facades\DB;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 class AppointmentController extends Controller
@@ -18,8 +21,11 @@ class AppointmentController extends Controller
     public function index()
     {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         return view('admin.appointments');
 =======
+=======
+>>>>>>> Stashed changes
         $appt = DB::table('appointment')
             ->leftJoin('customers', 'customers.customer_id', '=', 'appointment.user_id')
             ->select('appointment.*', 'customers.first_name', 'customers.last_name','customers.email')
@@ -82,6 +88,9 @@ class AppointmentController extends Controller
         $request->status = 'Declined';
         $request->save();
         return back()->with('success', 'declined successfully.');
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
     }
 }

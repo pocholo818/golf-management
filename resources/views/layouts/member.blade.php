@@ -24,8 +24,12 @@
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}" />
 
 <<<<<<< Updated upstream:resources/views/layouts/member.blade.php
+<<<<<<< Updated upstream:resources/views/layouts/member.blade.php
 =======
         {{-- @vite ('resources/sass/course_members.scss') --}}
+>>>>>>> Stashed changes:resources/views/Layouts/member_nav.blade.php
+=======
+
 >>>>>>> Stashed changes:resources/views/Layouts/member_nav.blade.php
 
     </head>
@@ -98,6 +102,7 @@
                             <a class="dropdown-item" href="pages-profile.html"><i
                                     class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                     class="align-middle">Profile</span></a>
+<<<<<<< Updated upstream:resources/views/layouts/member.blade.php
                             {{-- <div class="dropdown-divider"></div> --}}
 
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -105,6 +110,16 @@
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+=======
+                       
+
+                                 <a class="dropdown-item" href="{{ route('admin_logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
+                                        <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>{{ __('Logout') }}
+                                    </a>
+                                    
+
+                            <form id="logout-form" action="{{ route('member_logout') }}" method="POST" class="d-none">
+>>>>>>> Stashed changes:resources/views/Layouts/member_nav.blade.php
                                 @csrf
                             </form>
                         </div>
