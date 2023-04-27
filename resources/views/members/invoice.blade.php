@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream:resources/views/members/invoice.blade.php
 @extends('layouts.member')
+=======
+@extends('layouts.member_nav')
+>>>>>>> Stashed changes:resources/views/Members/Invoice/index_invoice.blade.php
 
 @section('content')
 <div class="container">
