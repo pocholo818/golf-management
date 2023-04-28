@@ -23,7 +23,7 @@
 
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}" />
 
-        @vite ('resources/sass/course_members.scss')
+        {{-- @vite ('resources/sass/course_members.scss') --}}
 
     </head>
     <style>

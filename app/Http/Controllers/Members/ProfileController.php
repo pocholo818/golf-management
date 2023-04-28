@@ -54,7 +54,7 @@ class ProfileController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(MemberRequest $request, string $id)
+    public function update(Request $request, string $id)
     {
         $profile = Members::find($id);
         $input = $request->all();

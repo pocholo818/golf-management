@@ -36,5 +36,6 @@ class MemberRequest extends FormRequest
                 ->letters()
             ],
         ];
+        
     }
 }

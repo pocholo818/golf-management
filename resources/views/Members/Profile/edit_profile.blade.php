@@ -8,7 +8,7 @@
             <a href="{{url('member/profile')}}">
                 <button type="button" class="btn btn-outline-danger" >Back</button>
             </a>
-            <img class="card-img" src="{{ asset('images/dp.png') }}" style="display:block; margin-right:auto; margin-left:auto;">
+            <img class="card-img" src="{{ asset('images/dp.png') }}" style="display:block; margin-right:auto; margin-left:auto; width: 100px">
 
             <form action="{{route('update_profile',$profile->customer_id)}}" method="post">
                 {!! csrf_field() !!}
