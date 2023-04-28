@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Members;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Members;
+use App\Http\Requests\MemberRequest;
 
 class ProfileController extends Controller
 {
@@ -12,7 +14,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        return view('Members.Profile.index_profile');
+        $profile = Members::where('customer_id',auth('member')->user()->customer_id)->get();
+        return view('Members.Profile.index_profile',['profile' => $profile]);
     }
 
     /**
@@ -44,17 +47,21 @@ class ProfileController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $profile = Members::find($id);
+        return view('Members.Profile.edit_profile',['profile' => $profile]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(MemberRequest $request, string $id)
     {
-        //
+        $profile = Members::find($id);
+        $input = $request->all();
+        // dd($input);
+        $profile->update($input);
+        return redirect()->route('profile')->with('success', 'Profile updated!');
     }
-
     /**
      * Remove the specified resource from storage.
      */

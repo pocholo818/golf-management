@@ -43,8 +43,8 @@ Route::group(['prefix' => 'admin/golf_course'], function () {
     Route::get('/', ['as' => 'golf_course', 'uses' => "Admin\CourseController@index"]);
     Route::get('/create_course', ['as' => 'create_course', 'uses' => "Admin\CourseController@create"]);
     Route::post('/store_course', ['as' => 'store_course', 'uses' => "Admin\CourseController@store"]);
-    Route::get('/edit_course/{id}', ['as' => 'edit_course', 'uses' => "Admin\CourseController@edit"]);    
-    Route::put('/update_course/{id}', ['as' => 'update_course', 'uses' => "Admin\CourseController@update"]);    
+    Route::get('/edit_course/{id}', ['as' => 'edit_course', 'uses' => "Admin\CourseController@edit"]);
+    Route::put('/update_course/{id}', ['as' => 'update_course', 'uses' => "Admin\CourseController@update"]);
     Route::delete('/delete_course/{id}', ['as' => 'delete_course', 'uses' => "Admin\CourseController@destroy"]);
 });
 
@@ -82,4 +82,6 @@ Route::group(['prefix' => 'member/invoice'], function () {
 
 Route::group(['prefix' => 'member/profile'], function () {
     Route::get('/', ['as' => 'profile', 'uses' => "Members\ProfileController@index"]);
+    Route::get('/edit_profile/{id}', ['as' => 'edit_profile', 'uses' => "Members\ProfileController@edit"]);
+    Route::put('/update_profile/{id}', ['as' => 'update_profile',  'uses' => "Members\ProfileController@update"]);
 });

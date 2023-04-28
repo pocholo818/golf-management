@@ -23,6 +23,7 @@
 
         <link rel="stylesheet" href="{{ asset('css/custom.min.css') }}" />
 
+
         {{-- boostrap CDN --}}
         {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
 
@@ -99,12 +100,12 @@
                             <a class="dropdown-item" href="pages-profile.html"><i
                                     class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i> <span
                                     class="align-middle">Profile</span></a>
-                       
+
 
                                     <a class="dropdown-item" href="{{ route('admin_logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
                                         <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>{{ __('Logout') }}
                                     </a>
-                                    
+
 
                             <form id="logout-form" action="{{ route('admin_logout') }}" method="POST" class="d-none">
                                 @csrf
@@ -112,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-      
+
     </header>
                 <!-- ========== App Menu ========== -->
                 <div class="app-menu navbar-menu" style="background: #197f5a;">
