@@ -21,7 +21,7 @@
                     <li class="list-group-item">Capacity: {{$item->capacity}}</li>
                     <li class="list-group-item">₱ {{$item->price}}</li>
                     </ul>
-                    <a href="{{route('create_book_course',$item->course_id)}}">
+                    <a href="{{route('bookCreate',$item->course_id)}}">
                     <button type="button" class="btn btn-primary">
                     Book Appointment
                     </button>

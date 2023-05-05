@@ -34,7 +34,7 @@ class MemberController extends Controller
          if (auth('member')->attempt(['email' => $request->get('email'), 'password' => $request->get('password')])) {
             $auth = auth('member')->user();
             // dd($auth);
-            return redirect()->route('book_course');
+            return redirect()->route('bookCourse');
         }
         // dd("warning", "wrong credentials");
         return redirect()->back()->with("warning", "wrong credentials");

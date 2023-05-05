@@ -16,7 +16,7 @@ class MemberController extends Controller
     public function index()
     {
         $members = Members::all();
-        return view('Admin.Members.index_members',['members' => $members]);
+        return view('Admin.Members.index',['members' => $members]);
         // return view('Admin.Members.index_members');
     }
 
@@ -25,7 +25,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('Admin.Members.create_members');
+        return view('Admin.Members.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class MemberController extends Controller
 
         ]);
         $member->save();
-        return redirect()->route('manage_member')->with([
+        return redirect()->route('memberManage')->with([
             'success' => 'Members created!'
         ]);
         
@@ -65,7 +65,7 @@ class MemberController extends Controller
     public function edit(string $id)
     {
         $members = Members::find($id);
-        return view('Admin.Members.edit_members',['members' => $members]);
+        return view('Admin.Members.edit',['members' => $members]);
     }
 
     /**
@@ -76,7 +76,7 @@ class MemberController extends Controller
         $member = Members::find($id);
         $input = $request->all();
         $member->update($input);
-        return redirect()->route('manage_member')->with('success', 'Members updated!');
+        return redirect()->route('memberManage')->with('success', 'Members updated!');
     }
 
     /**

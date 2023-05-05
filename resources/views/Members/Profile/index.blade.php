@@ -18,7 +18,7 @@
                         <h5 class="card-title">Email: {{ $data->email }}</h5>
                     @endforeach
 
-                       <a type="button" class="btn btn-primary" href="{{ route('edit_profile', auth('member')->user()->customer_id) }}">Edit Profile</a>
+                       <a type="button" class="btn btn-primary" href="{{ route('profileEdit', auth('member')->user()->customer_id) }}">Edit Profile</a>
 
 
                         {{-- <!-- Button trigger modal -->

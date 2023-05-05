@@ -5,12 +5,12 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <a href="{{url('member/profile')}}">
+            <a href="{{ route('profile') }}">
                 <button type="button" class="btn btn-outline-danger" >Back</button>
             </a>
             <img class="card-img" src="{{ asset('images/dp.png') }}" style="display:block; margin-right:auto; margin-left:auto; width: 100px">
 
-            <form action="{{route('update_profile',$profile->customer_id)}}" method="post">
+            <form action="{{route('profileUpdate',$profile->customer_id)}}" method="post">
                 {!! csrf_field() !!}
                 @method('PUT')
                 <div class="mb-3">

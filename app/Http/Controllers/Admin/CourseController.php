@@ -15,7 +15,7 @@ class CourseController extends Controller
     public function index()
     { 
         $courses = Course::all();
-        return view('Admin.Course.index_course',['courses' => $courses]);
+        return view('Admin.Course.index',['courses' => $courses]);
         // return view('Admin.Course.course');
     }
 
@@ -24,7 +24,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('Admin.Course.create_course');
+        return view('Admin.Course.create');
     }
 
     /**
@@ -54,7 +54,7 @@ class CourseController extends Controller
         $courses->photo = $image;
         $courses->save();
 
-        return redirect()->route('golf_course')->with('success', 'Course created!');
+        return redirect()->route('course')->with('success', 'Course created!');
 
         // return back()->with('success', 'Course created successfully.');
     }
@@ -74,7 +74,7 @@ class CourseController extends Controller
     {
         $courses = Course::find($id);
         // dd($courses);
-        return view('Admin.Course.edit_course',['courses' => $courses]);
+        return view('Admin.Course.edit',['courses' => $courses]);
     }
 
     /**
@@ -106,7 +106,7 @@ class CourseController extends Controller
             $courses->update($request->except('photo'));
         }
     
-        return redirect()->route('golf_course')->with('success', 'Course updated!');
+        return redirect()->route('course')->with('success', 'Course updated!');
     }
 
 

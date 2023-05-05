@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="modal-header" >
-    <a href="{{route('golf_course')}}">
+    <a href="{{route('course')}}">
     <button type="button" class="btn btn-outline-danger" >Back</button>
     </a>
 </div>
@@ -19,7 +19,7 @@
                     </ul>
                 </div>
             @endif
-                <form action="{{route('update_course', $courses->course_id)}}" method="post">
+                <form action="{{route('courseUpdate', $courses->course_id)}}" method="post">
                     @csrf
                     @method('PUT')
                 

@@ -102,12 +102,12 @@
                                     class="align-middle">Profile</span></a>
 
 
-                                    <a class="dropdown-item" href="{{ route('admin_logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
+                                    <a class="dropdown-item" href="{{ route('adminLogout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
                                         <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>{{ __('Logout') }}
                                     </a>
 
 
-                            <form id="logout-form" action="{{ route('admin_logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('adminLogout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </div>
@@ -138,7 +138,7 @@
                             <ul class="navbar-nav" id="navbar-nav">
                                 <li class="menu-title text-white"><span data-key="t-menu">Menu</span></li>
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link text-white" href="{{route('manage_member')}}">
+                                    <a class="nav-link menu-link text-white" href="{{route('memberManage')}}">
                                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Members</span>
                                     </a>
                                 </li>
@@ -149,7 +149,7 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link text-white" href="{{route('golf_course')}}">
+                                    <a class="nav-link menu-link text-white" href="{{route('course')}}">
                                         <i class="ri-layout-3-line"></i> <span data-key="t-layouts">Golf Course</span>
                                     </a>
                                 </li>

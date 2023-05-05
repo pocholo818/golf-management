@@ -18,34 +18,36 @@ Route::get('/', function () {
 });
 
 //Admin Routes
-Route::get('/Admin', ['as' => 'admin_login', 'uses' => 'Auth\AdminController@index']);
+Route::get('/admin', ['as' => 'admin_login', 'uses' => 'Auth\AdminController@index']);
 
 Route::post('/home', ['as' => 'home', 'uses' => 'Auth\AdminController@store']);
 
-Route::post('/admin_logout', ['as' => 'admin_logout', 'uses' => 'Auth\AdminController@destroy']);
+Route::post('/admin/logout', ['as' => 'adminLogout', 'uses' => 'Auth\AdminController@destroy']);
 
 Route::group(['prefix' => 'admin/member'], function () {
-    Route::get('/', ['as' => 'manage_member', 'uses' => "Admin\MemberController@index"]);
-    Route::get('/create_member', ['as' => 'create_member', 'uses' => "Admin\MemberController@create"]);
-    Route::post('/store_member', ['as' => 'store_member', 'uses' => "Admin\MemberController@store"]);
-    Route::get('edit_member/{id}', ['as' => 'edit_member', 'uses' => "Admin\MemberController@edit"]);
-    Route::put('update_member/{id}', ['as' => 'update_member', 'uses' => "Admin\MemberController@update"]);
-    Route::delete('delete_member/{id}', ['as' => 'delete_member', 'uses' => "Admin\MemberController@destroy"]);
+    Route::get('/', ['as' => 'memberManage', 'uses' => "Admin\MemberController@index"]);
+    Route::get('/create', ['as' => 'memberCreate', 'uses' => "Admin\MemberController@create"]);
+    Route::post('/store', ['as' => 'memberStore', 'uses' => "Admin\MemberController@store"]);
+    Route::get('/edit/{id}', ['as' => 'memberEdit', 'uses' => "Admin\MemberController@edit"]);
+    Route::put('/update/{id}', ['as' => 'memberUpdate', 'uses' => "Admin\MemberController@update"]);
+    Route::delete('/delete/{id}', ['as' => 'memberDelete', 'uses' => "Admin\MemberController@destroy"]);
 });
 
 Route::group(['prefix' => 'admin/appointment'], function () {
     Route::get('/', ['as' => 'appointments', 'uses' => "Admin\AppointmentController@index"]);
-    Route::put('/edit_appt/{id}', ['as' => 'edit_appt', 'uses' => "Admin\AppointmentController@edit"]);
-    Route::put('/decline_appt/{id}', ['as' => 'decline_appt', 'uses' => "Admin\AppointmentController@destroy"]);
+    Route::put('/edit/{id}', ['as' => 'appoinmentAdminEdit', 'uses' => "Admin\AppointmentController@edit"]);
+    Route::put('/decline/{id}', ['as' => 'appoinmentAdminDecline', 'uses' => "Admin\AppointmentController@destroy"]);
 });
+
 //Crud golf course
-Route::group(['prefix' => 'admin/golf_course'], function () {
-    Route::get('/', ['as' => 'golf_course', 'uses' => "Admin\CourseController@index"]);
-    Route::get('/create_course', ['as' => 'create_course', 'uses' => "Admin\CourseController@create"]);
-    Route::post('/store_course', ['as' => 'store_course', 'uses' => "Admin\CourseController@store"]);
-    Route::get('/edit_course/{id}', ['as' => 'edit_course', 'uses' => "Admin\CourseController@edit"]);
-    Route::put('/update_course/{id}', ['as' => 'update_course', 'uses' => "Admin\CourseController@update"]);
-    Route::delete('/delete_course/{id}', ['as' => 'delete_course', 'uses' => "Admin\CourseController@destroy"]);
+Route::group(['prefix' => 'admin/course'], function () {
+    Route::get('/', ['as' => 'course', 'uses' => "Admin\CourseController@index"]);
+    Route::get('/create', ['as' => 'courseCreate', 'uses' => "Admin\CourseController@create"]);
+    // Route::namespace('courseCreate')->get('/create', "Admin\CourseController@create");
+    Route::post('/store', ['as' => 'courseStore', 'uses' => "Admin\CourseController@store"]);
+    Route::get('/edit/{id}', ['as' => 'courseEdit', 'uses' => "Admin\CourseController@edit"]);
+    Route::put('/update/{id}', ['as' => 'courseUpdate', 'uses' => "Admin\CourseController@update"]);
+    Route::delete('/delete/{id}', ['as' => 'courseDelete', 'uses' => "Admin\CourseController@destroy"]);
 });
 
 Route::group(['prefix' => 'admin/schedules'], function () {
@@ -59,21 +61,21 @@ Route::group(['prefix' => 'admin/transaction'], function () {
 
 
 //Members Routes
-Route::get('/Member', ['as' => 'member_login', 'uses' => 'Auth\MemberController@index']);
+Route::get('/member', ['as' => 'member_login', 'uses' => 'Auth\MemberController@index']);
 Route::post('/index', ['as' => 'index', 'uses' => 'Auth\MemberController@store']);
-Route::post('/member_logout', ['as' => 'member_logout', 'uses' => 'Auth\MemberController@destroy']);
+Route::post('/member/logout', ['as' => 'memberLogout', 'uses' => 'Auth\MemberController@destroy']);
 
-Route::group(['prefix' => 'member/book_course'], function () {
-    Route::get('/', ['as' => 'book_course', 'uses' => "Members\BookCourseController@index"]);
-    Route::get('/create_book_course/{id}', ['as' => 'create_book_course', 'uses' => "Members\BookCourseController@create"]);
-    Route::post('/store_book_course', ['as' => 'store_book_course', 'uses' => "Members\BookCourseController@store"]);
+Route::group(['prefix' => 'member/book/course'], function () {
+    Route::get('/', ['as' => 'bookCourse', 'uses' => "Members\BookCourseController@index"]);
+    Route::get('/create/{id}', ['as' => 'bookCreate', 'uses' => "Members\BookCourseController@create"]);
+    Route::post('/store', ['as' => 'bookStore', 'uses' => "Members\BookCourseController@store"]);
 });
 
 Route::group(['prefix' => 'member/appointment'], function () {
     Route::get('/', ['as' => 'appointment', 'uses' => "Members\AppointmentController@index"]);
-    Route::get('/edit_appointment/{id}', ['as' => 'edit_appointment', 'uses' => "Members\AppointmentController@edit"]);
-    Route::put('/update_appointment/{id}', ['as' => 'update_appointment', 'uses' => "Members\AppointmentController@update"]);
-    Route::delete('/delete_appointment/{id}', ['as' => 'delete_appointment', 'uses' => "Members\AppointmentController@destroy"]);
+    Route::get('/edit/{id}', ['as' => 'appointmentEdit', 'uses' => "Members\AppointmentController@edit"]);
+    Route::put('/update/{id}', ['as' => 'appointmentUpdate', 'uses' => "Members\AppointmentController@update"]);
+    Route::delete('/delete/{id}', ['as' => 'appointmentDelete', 'uses' => "Members\AppointmentController@destroy"]);
 });
 
 Route::group(['prefix' => 'member/invoice'], function () {
@@ -82,6 +84,6 @@ Route::group(['prefix' => 'member/invoice'], function () {
 
 Route::group(['prefix' => 'member/profile'], function () {
     Route::get('/', ['as' => 'profile', 'uses' => "Members\ProfileController@index"]);
-    Route::get('/edit_profile/{id}', ['as' => 'edit_profile', 'uses' => "Members\ProfileController@edit"]);
-    Route::put('/update_profile/{id}', ['as' => 'update_profile',  'uses' => "Members\ProfileController@update"]);
+    Route::get('/edit/{id}', ['as' => 'profileEdit', 'uses' => "Members\ProfileController@edit"]);
+    Route::put('/update/{id}', ['as' => 'profileUpdate',  'uses' => "Members\ProfileController@update"]);
 });

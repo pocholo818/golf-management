@@ -18,7 +18,7 @@ class BookcourseController extends Controller
     public function index()
     {
         $bookcourses = BookCourse::all();
-        return view('Members.BookCourse.index_book_course',['bookcourses' => $bookcourses]);
+        return view('Members.BookCourse.index',['bookcourses' => $bookcourses]);
         // return view('Members.BookCourse.index_book_course');
     }
 
@@ -28,7 +28,7 @@ class BookcourseController extends Controller
     public function create($id)
     {
         $courses = Course::find($id);
-        return view('Members.BookCourse.create_book_course',['courses' => $courses]);
+        return view('Members.BookCourse.create',['courses' => $courses]);
         // return view('Members.BookCourse.create_book_course');
     }
 
@@ -66,7 +66,7 @@ class BookcourseController extends Controller
             ]);
     
             Session::flash('success', 'Appointment created!');
-            return redirect()->route('book_course');        
+            return redirect()->route('bookCourse');        
         }
     }
     /**
@@ -83,7 +83,7 @@ class BookcourseController extends Controller
     public function edit(string $id)
     {
         $bookcourses = BookCourse::find($id);
-        return view('Members.BookCourse.edit_book_course',['bookcourses' => $bookcourses]);
+        return view('Members.BookCourse.edit',['bookcourses' => $bookcourses]);
     }
 
     /**

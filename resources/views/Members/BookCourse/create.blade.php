@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="modal-header">
-    <a href="{{route('book_course')}}">
+    <a href="{{route('bookCourse')}}">
         <button type="button" class="btn btn-outline-danger">Back</button>
     </a>
 </div>
@@ -42,7 +42,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card p-4 border mt-4">
-                <form action="{{route('store_book_course')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('bookStore')}}" method="post" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <div class="form-group col-md-8" style="margin-top: 10px">
                         <label for="inputState">{{$courses->name}}</label>

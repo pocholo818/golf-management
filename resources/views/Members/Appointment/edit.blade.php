@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="modal-header">
-<a href="{{route('book_course')}}">
+<a href="{{route('appointment')}}">
 <button type="button" class="btn btn-outline-danger">Back</button>
 </a>
 </div>
@@ -23,7 +23,7 @@
 </div>
 @endif
 
-<form action="{{route('update_appointment',$appt->app_id)}}" method="post">
+<form action="{{route('appointmentUpdate',$appt->app_id)}}" method="post">
     {!! csrf_field() !!}
     @method('PUT')
     <div class="form-group col-md-8" style="margin-top: 10px">

@@ -15,7 +15,7 @@ class AppointmentController extends Controller
     public function index()
     {
         $appt = Appointment::where('user_id',auth('member')->user()->customer_id)->get();
-        return view('Members.Appointment.index_appointment',['appt' => $appt]);
+        return view('Members.Appointment.index',['appt' => $appt]);
         // return view('Members.Appointment.index_appointment');
     }
 
@@ -49,7 +49,7 @@ class AppointmentController extends Controller
     public function edit(string $id)
     {
         $appt = Appointment::find($id);
-        return view('Members.Appointment.edit_appointment',['appt' => $appt]);
+        return view('Members.Appointment.edit',['appt' => $appt]);
     }
 
     /**

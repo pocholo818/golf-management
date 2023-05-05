@@ -32,7 +32,7 @@ class AdminController extends Controller
     {
         if(auth()->attempt(['email' => $request->get('email'), 'password' => $request->get('password')])){
             // dd(['email' => $request->get('email'), 'password' => $request->get('password')]);
-            return redirect()->route('manage_member');
+            return redirect()->route('memberManage');
         }
             // dd("warning","wrong credentials");
             return redirect()->back()->with("warning","wrong credentials");

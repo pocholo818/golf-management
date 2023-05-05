@@ -7,7 +7,7 @@
             <div class="text-center my-5">
                 <p class="text-white mb-0 p-5" style="font-size: x-large; font-weight: bold ">INTERNATIONAL GOLF CLUB</p>
 
-                <a href="{{url('/Member')}}">
+                <a href="{{url('/member')}}">
                     <button type="button" class="btn btn-primary btn-lg">SIGN IN!</button>
                 </a>
             </div>

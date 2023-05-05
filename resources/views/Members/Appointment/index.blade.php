@@ -47,17 +47,17 @@
                 <button type="button" class="btn btn-outline-danger" style="width: 100%" disabled>Declined</button>
             @else
 
-            <a href="{{route('edit_appointment',$item->app_id)}}" >
+            <a href="{{route('appointmentEdit',$item->app_id)}}" >
                 <button type="button" class="btn btn-primary"  style="width: 48%">
                     Edit
                 </button>
                 </a>
 
-                <a   href="{{ route('delete_appointment', $item->app_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this appointment?')){document.getElementById('delete-form-{{ $item->app_id }}').submit();}">
+                <a   href="{{ route('appointmentDelete', $item->app_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this appointment?')){document.getElementById('delete-form-{{ $item->app_id }}').submit();}">
                 <button type="submit"  class="btn btn-danger" style="width: 48%">Delete</button>
                 </a>
 
-                <form  id="delete-form-{{$item->app_id}}" action="{{ route('delete_appointment', $item->app_id) }}" method="post" style="display: none;">
+                <form  id="delete-form-{{$item->app_id}}" action="{{ route('appointmentDelete', $item->app_id) }}" method="post" style="display: none;">
                     @csrf
                     @method('DELETE')
                 </form>

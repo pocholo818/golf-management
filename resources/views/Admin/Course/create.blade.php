@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="modal-header" >
-    <a href="{{route('golf_course')}}">
+    <a href="{{route('course')}}">
     <button type="button" class="btn btn-outline-danger" >Back</button>
     </a>
 </div>
@@ -19,7 +19,7 @@
 </div>
 @endif
 
-<form action="{{route('store_course')}}" method="post" enctype="multipart/form-data" class="row g-3">
+<form action="{{route('courseStore')}}" method="post" enctype="multipart/form-data" class="row g-3">
     {!! csrf_field() !!}
     <div class="">
         <label for="exampleFormControlInput1" class="form-label">Enter Golf Course Number</label>

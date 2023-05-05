@@ -15,7 +15,7 @@ class ProfileController extends Controller
     public function index()
     {
         $profile = Members::where('customer_id',auth('member')->user()->customer_id)->get();
-        return view('Members.Profile.index_profile',['profile' => $profile]);
+        return view('Members.Profile.index',['profile' => $profile]);
     }
 
     /**
@@ -48,7 +48,7 @@ class ProfileController extends Controller
     public function edit(string $id)
     {
         $profile = Members::find($id);
-        return view('Members.Profile.edit_profile',['profile' => $profile]);
+        return view('Members.Profile.edit',['profile' => $profile]);
     }
 
     /**

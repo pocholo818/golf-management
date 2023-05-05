@@ -97,12 +97,12 @@
                                     class="align-middle">Profile</span></a>
 
 
-                                 <a class="dropdown-item" href="{{ route('admin_logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
+                                 <a class="dropdown-item" href="{{ route('memberLogout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
                                         <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>{{ __('Logout') }}
                                     </a>
 
 
-                            <form id="logout-form" action="{{ route('member_logout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('memberLogout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </div>
@@ -134,7 +134,7 @@
                             <ul class="navbar-nav" id="navbar-nav">
                                 <li class="menu-title text-white"><span data-key="t-menu">Menu</span></li>
                                 <li class="nav-item">
-                                    <a class="nav-link menu-link text-white" href="{{ route('book_course') }}">
+                                    <a class="nav-link menu-link text-white" href="{{ route('bookCourse') }}">
                                         <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Golf Course</span>
                                     </a>
                                 </li>

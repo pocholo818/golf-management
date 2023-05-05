@@ -7,7 +7,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <!-- Button trigger modal -->
-                            <a href="{{route('create_member')}}">
+                            <a href="{{route('memberCreate')}}">
                             <button type="button" class="btn btn-primary">
                                 + Add Member
                             </button>
@@ -38,16 +38,16 @@
                                             <td>{{ $item->mobile_number }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>
-                                                <a href="{{route('edit_member',$item->customer_id)}}">
+                                                <a href="{{route('memberEdit',$item->customer_id)}}">
                                                 <button type="button" class="btn btn-primary" >
                                                     Edit
                                                 </button>
                                                 </a>
-                                                <a   href="{{ route('delete_member', $item->customer_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this member?')){document.getElementById('delete-form-{{ $item->customer_id }}').submit();}">
+                                                <a   href="{{ route('memberDelete', $item->customer_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this member?')){document.getElementById('delete-form-{{ $item->customer_id }}').submit();}">
                                                 <button type="submit"  class="btn btn-danger" >Delete</button>
                                                 </a>
 
-                                                <form  id="delete-form-{{$item->customer_id}}" action="{{ route('delete_member', $item->customer_id) }}" method="post" style="display: none;">
+                                                <form  id="delete-form-{{$item->customer_id}}" action="{{ route('memberDelete', $item->customer_id) }}" method="post" style="display: none;">
                                                     @csrf
                                                     @method('DELETE')
                                                 </form>
