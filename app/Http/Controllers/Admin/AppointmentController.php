@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BookCourse;
 use App\Models\Appointment;
+use App\Models\Customer;
 use App\Http\Requests\AppointmentRequest;
 use Illuminate\Support\Facades\DB;
 
@@ -16,11 +17,10 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appt = DB::table('appointment')
-            ->leftJoin('customers', 'customers.customer_id', '=', 'appointment.user_id')
-            ->select('appointment.*', 'customers.first_name', 'customers.last_name','customers.email')
-            ->get();
-    
+        $appt = Appointment::leftJoin('customers', 'customers.customer_id', '=', 'appointment.user_id')
+        ->select('appointment.*', 'customers.first_name', 'customers.last_name', 'customers.email')
+        ->paginate(10);
+
         return view('Admin.Appointments.index_appointments', ['appt' => $appt]);
     }
     
@@ -53,7 +53,7 @@ class AppointmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function accept(string $id)
     {
         $request = Appointment::find($id);
         $request->status = 'Accepted';
@@ -72,7 +72,7 @@ class AppointmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function decline(string $id)
     {
         $request = Appointment::find($id);
         $request->status = 'Declined';

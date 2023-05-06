@@ -102,12 +102,12 @@
                                     class="align-middle">Profile</span></a>
 
 
-                                    <a class="dropdown-item" href="{{ route('adminLogout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
                                         <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>{{ __('Logout') }}
                                     </a>
 
 
-                            <form id="logout-form" action="{{ route('adminLogout') }}" method="POST" class="d-none">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
                         </div>
@@ -165,6 +165,13 @@
                                         <i class="ri-pages-line"></i> <span data-key="t-pages">Transactions</span>
                                     </a>
                                 </li>
+
+                                <li class="nav-item" >
+                                    <a class="nav-link menu-link text-white" href="{{route('usertype')}}">
+                                        <i class="ri-pages-line"></i> <span data-key="t-pages">User Type</span>
+                                    </a>
+                                </li>
+
                             </ul>
                         </div>
                         <!-- Sidebar -->

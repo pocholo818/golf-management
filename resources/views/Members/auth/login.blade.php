@@ -44,7 +44,7 @@
     </div>
 @endif
 
-                        <form  action="{{ route('index') }}" method="post" enctype="multipart/form-data" class="row g-3">
+                        <form  action="{{ route('authenticate') }}" method="post" enctype="multipart/form-data" class="row g-3">
                             {!! csrf_field() !!}
 
                             <div class="mb-3">

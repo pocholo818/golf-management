@@ -1,5 +1,5 @@
 
-@extends('layouts.admin_nav')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -19,7 +19,7 @@
 </div>
 @endif
 
-<form action="{{route('courseStore')}}" method="post" enctype="multipart/form-data" class="row g-3">
+<form action="" method="post" enctype="multipart/form-data" class="row g-3">
     {!! csrf_field() !!}
     <div class="">
         <label for="exampleFormControlInput1" class="form-label">Enter Golf Course Number</label>

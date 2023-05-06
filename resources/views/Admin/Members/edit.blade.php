@@ -1,4 +1,4 @@
-@extends('layouts.admin_nav')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -19,7 +19,7 @@
     </div>
 @endif
 
-            <form action="{{route('memberUpdate',$members->customer_id)}}" method="post" enctype="multipart/form-data" class="row g-3">
+            <form action="{{route('update',$members->customer_id)}}" method="post" enctype="multipart/form-data" class="row g-3">
                 {!! csrf_field() !!}
                 @method("PUT")
                 <div class="">

@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Members;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Auth;
 
-class AdminController extends Controller
+class MemberController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function login()
     {
-        return view('Auth.admin_login');
+        return view('Members.auth.login');
     }
 
     /**
@@ -28,14 +28,16 @@ class AdminController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function authenticate(Request $request)
     {
-        if(auth()->attempt(['email' => $request->get('email'), 'password' => $request->get('password')])){
-            // dd(['email' => $request->get('email'), 'password' => $request->get('password')]);
-            return redirect()->route('memberManage');
+         // dd($request->all());
+         if (auth('member')->attempt(['email' => $request->get('email'), 'password' => $request->get('password')])) {
+            $auth = auth('member')->user();
+            // dd($auth);
+            return redirect()->route('bookCourse');
         }
-            // dd("warning","wrong credentials");
-            return redirect()->back()->with("warning","wrong credentials");
+        // dd("warning", "wrong credentials");
+        return redirect()->back()->with("warning", "wrong credentials");
     }
 
     /**
@@ -65,9 +67,9 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy()
+    public function logout()
     {
-        Auth::logout();
-        return redirect()->route('admin_login');
+        Auth::guard('member')->logout();
+        return redirect()->route('member.login');
     }
 }

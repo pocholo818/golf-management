@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="modal-header" >
-    <a href="{{route('memberManage')}}">
+    <a href="{{route('usertype')}}">
     <button type="button" class="btn btn-outline-danger" >Back</button>
     </a>
 </div>
@@ -20,21 +20,23 @@
     </div>
 @endif
                 <div class="">
-                    <label for="exampleFormControlInput1" class="form-label">First Name</label>
-                    <input type="text" name="first_name" class="form-control" id="exampleFormControlInput1" value="{{ old('first_name') }}" >
-                </div>
-                <div class="">
-                    <label for="exampleFormControlInput1" class="form-label">Last Name</label>
-                    <input type="text" name="last_name" class="form-control" id="exampleFormControlInput1" value="{{ old('last_name') }}" >
-                </div>
-                <div class="">
-                    <label for="exampleFormControlInput1" class="form-label">Mobile Number</label>
-                    <input type="number" name="mobile_number" class="form-control" id="exampleFormControlInput1" value="{{ old('mobile_number') }}" >
+                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" value="{{ old('name') }}" >
                 </div>
                 <div class="">
                     <label for="formFile" class="form-label">Email</label>
                     <input type="email" name="email" step="any" class="form-control" value="{{ old('email') }}" >
                 </div>
+                <div class="">
+                    <label for="exampleFormControlInput1" class="form-label">Role</label>
+                    <select id="inputState" class="form-control" name="role">
+                        <option></option>
+                        <option value="finance" {{ old('role') == 'finance' ? 'selected' : '' }}>Finance</option>
+                        <option value="kiosk" {{ old('role') == 'kiosk' ? 'selected' : '' }}>Kiosk</option>
+                        <option value="services" {{ old('role') == 'services' ? 'selected' : '' }}>Services</option>
+                    </select>
+                </div>
+
                 <div class="">
                     <label for="formFile" class="form-label">Password</label>
                     <input type="password" name="password" step="any" class="form-control" >

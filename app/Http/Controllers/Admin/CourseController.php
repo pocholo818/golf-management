@@ -14,8 +14,8 @@ class CourseController extends Controller
      */
     public function index()
     { 
-        $courses = Course::all();
-        return view('Admin.Course.index',['courses' => $courses]);
+        $courses = Course::paginate(10);
+        return view('Admin.course.index',['courses' => $courses]);
         // return view('Admin.Course.course');
     }
 
@@ -24,7 +24,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('Admin.Course.create');
+        return view('Admin.course.create');
     }
 
     /**
@@ -74,7 +74,7 @@ class CourseController extends Controller
     {
         $courses = Course::find($id);
         // dd($courses);
-        return view('Admin.Course.edit',['courses' => $courses]);
+        return view('Admin.course.edit',['courses' => $courses]);
     }
 
     /**

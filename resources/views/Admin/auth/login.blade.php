@@ -176,7 +176,7 @@
 
 <body>   
 
- <form class="form_container mx-auto" action="{{ route('home') }}" method="post">
+ <form class="form_container mx-auto" action="{{ route('authenticated') }}" method="post">
         {!! csrf_field() !!}
     
         <div class="logo_container"></div>

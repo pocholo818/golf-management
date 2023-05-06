@@ -21,36 +21,34 @@
         <thead>
             <tr>
             <th scope="col">#</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Mobile Mobile</th>
+            <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Role</th>
             <th scope="col">Action</th>
             </tr>
         </thead>
 
     <tbody>
         @php
-        $count = ($members->currentPage() - 1) * $members->perPage() + 1;
+        $count = ($usertype->currentPage() - 1) * $usertype->perPage() + 1;
         @endphp
-        @foreach($members as $item)
+        @foreach($usertype as $item)
             <tr>
             <th scope="row">{{  $count++}}</th>
-            <td>{{ $item->first_name }}</td>
-            <td>{{ $item->last_name }}</td>
-            <td>{{ $item->mobile_number }}</td>
+            <td>{{ $item->name }}</td>
             <td>{{ $item->email }}</td>
+            <td>{{ $item->role }}</td>
             <td>
-                <a href="{{route('edit',$item->customer_id)}}">
+                <a href="{{route('edit',$item->id)}}">
                 <button type="button" class="btn btn-primary" >
                     Edit
                 </button>
                 </a>
-                <a   href="{{ route('delete', $item->customer_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this member?')){document.getElementById('delete-form-{{ $item->customer_id }}').submit();}">
+                <a   href="{{ route('delete', $item->id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this user?')){document.getElementById('delete-form-{{ $item->id }}').submit();}">
                 <button type="submit"  class="btn btn-danger" >Delete</button>
                 </a>
 
-                <form  id="delete-form-{{$item->customer_id}}" action="{{ route('delete', $item->customer_id) }}" method="post" style="display: none;">
+                <form  id="delete-form-{{$item->id}}" action="{{ route('delete', $item->id) }}" method="post" style="display: none;">
                     @csrf
                     @method('DELETE')
                 </form>
@@ -60,7 +58,7 @@
         </tbody>
 
         </table>
-        {!! $members->render() !!}
+        {!! $usertype->render() !!}
 </div>
 
 </div>

@@ -1,5 +1,5 @@
 
-@extends('layouts.admin_nav')
+@extends('layouts.admin')
 
 @section('content')
 
@@ -19,7 +19,7 @@
                     </ul>
                 </div>
             @endif
-                <form action="{{route('courseUpdate', $courses->course_id)}}" method="post">
+                <form action="{{route('update', $courses->course_id)}}" method="post">
                     @csrf
                     @method('PUT')
                 

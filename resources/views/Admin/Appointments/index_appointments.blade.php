@@ -1,4 +1,4 @@
-@extends('layouts.admin_nav')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -28,9 +28,14 @@
                 </thead>
         
             <tbody>
+                
+                @php
+                $count = ($appt->currentPage() - 1) * $appt->perPage() + 1;
+                @endphp
+
                 @foreach($appt as $item)
                     <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
+                    <th scope="row">{{ $count++ }}</th>
                     <td>{{ $item->name }}</td>
                     <td>{{ $item->first_name }} {{ $item->last_name }}</td>
                     <td>{{ $item->email }}</td>
@@ -53,19 +58,19 @@
                 @elseif($item->status == 'Declined')
                     <button type="button" class="btn btn-outline-danger" style="width: 100%" disabled>Declined</button>
                 @else
-                    <a href="{{ route('appoinmentAdminEdit', $item->app_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to accept this appointment?')){document.getElementById('update-form-{{ $item->app_id }}').submit();}">
+                    <a href="{{ route('accept', $item->app_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to accept this appointment?')){document.getElementById('update-form-{{ $item->app_id }}').submit();}">
                         <button type="submit" class="btn btn-success">Accept</button>
                     </a>
-                    <form id="update-form-{{$item->app_id}}" action="{{ route('appoinmentAdminEdit', $item->app_id) }}" method="post" style="display: none;">
+                    <form id="update-form-{{$item->app_id}}" action="{{ route('accept', $item->app_id) }}" method="post" style="display: none;">
                         @csrf
                         @method('PUT')
                     </form>
                 
-                    <a href="{{ route('appoinmentAdminDecline', $item->app_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to decline this appointment?')){document.getElementById('decline-form-{{ $item->app_id }}').submit();}">
+                    <a href="{{ route('decline', $item->app_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to decline this appointment?')){document.getElementById('decline-form-{{ $item->app_id }}').submit();}">
                         <button type="submit" class="btn btn-danger">Decline</button>
                     </a>
                 
-                    <form id="decline-form-{{$item->app_id}}" action="{{ route('appoinmentAdminDecline', $item->app_id) }}" method="post" style="display: none;">
+                    <form id="decline-form-{{$item->app_id}}" action="{{ route('decline', $item->app_id) }}" method="post" style="display: none;">
                         @csrf
                         @method('PUT')
                     </form>
@@ -79,7 +84,11 @@
                 </tbody>
         
                 </table>
+
+                {!! $appt->render() !!}
+      
             </div>
+
 </div>
 </div>
 </div>

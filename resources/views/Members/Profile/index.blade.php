@@ -1,4 +1,4 @@
-@extends('Layouts.member_nav')
+@extends('Layouts.member')
 
 @section('content')
 <div class="container">
