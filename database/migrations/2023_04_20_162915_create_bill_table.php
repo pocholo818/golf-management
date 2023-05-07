@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('bill', function (Blueprint $table) {
             $table->id('bill_id');
-            $table->float('total', 128);
-            $table->string('payment_method', 48);
-            $table->string('status',32);
-            $table->integer('user_id');
-            // $table->timestamps();
-            $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
+            $table->string('bill_code'); //10digits random too -- specific for bill
+            $table->bigInteger('user_id')->nullable(); //for admin id (kiosk, finance, merchandiser)
+            $table->string('account_id'); //reference the member account id //the 10random digit
+            $table->string('appointment_id')->nullable(); //once approved, create record in bill
+            $table->string('type'); //appointment, kiosk, if customer book appointment, type = appointment, if kiosk = kiosk
+            $table->decimal('total', 25, 2);
+            $table->string('status')->default('Pending');
+            $table->text('remarks')->nullable();
+            $table->timestamps();
         });
     }
 

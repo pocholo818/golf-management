@@ -18,12 +18,12 @@ class AppointmentController extends Controller
     public function index()
     {
         $appt = Appointment::leftJoin('customers', 'customers.customer_id', '=', 'appointment.user_id')
-        ->select('appointment.*', 'customers.first_name', 'customers.last_name', 'customers.email')
-        ->paginate(10);
+            ->select('appointment.*', 'customers.first_name', 'customers.last_name', 'customers.email')
+            ->paginate(10);
 
         return view('Admin.Appointments.index_appointments', ['appt' => $appt]);
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -32,7 +32,7 @@ class AppointmentController extends Controller
     {
         //
     }
-    
+
 
     /**
      * Store a newly created resource in storage.
@@ -58,7 +58,7 @@ class AppointmentController extends Controller
         $request = Appointment::find($id);
         $request->status = 'Accepted';
         $request->save();
-       return back()->with('success', 'updated successfully.');
+        return back()->with('success', 'updated successfully.');
     }
 
     /**

@@ -24,6 +24,7 @@ class MemberRequest extends FormRequest
     public function rules(): array
     {
         return [
+
             'first_name' => ['required'],
             'last_name' => ['required'],
             'last_name' => ['required'],
@@ -31,11 +32,10 @@ class MemberRequest extends FormRequest
             'email' => ['required'],
             'password' => [
                 Password::min(8)
-                ->mixedCase()
-                ->numbers()
-                ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->letters()
             ],
         ];
-        
     }
 }

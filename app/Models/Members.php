@@ -12,10 +12,11 @@ class Members extends Authenticatable
     protected $table = 'customers';
     protected $primaryKey = 'customer_id';
     protected $fillable = [
-        'first_name', 
-        'last_name', 
-        'last_name', 
-        'mobile_number', 
+        'account_code',
+        'first_name',
+        'last_name',
+        'last_name',
+        'mobile_number',
         'email',
         'password'
     ];

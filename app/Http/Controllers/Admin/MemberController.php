@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Members;
 use App\Http\Requests\MemberRequest;
 use Illuminate\Support\Facades\Hash;
+use Nette\Utils\Random;
+use Illuminate\Support\Str;
 
 class MemberController extends Controller
 {
@@ -16,7 +18,7 @@ class MemberController extends Controller
     public function index()
     {
         $members = Members::paginate(10);
-        return view('Admin.Members.index',['members' => $members]);
+        return view('Admin.Members.index', ['members' => $members]);
         // return view('Admin.Members.index_members');
     }
 
@@ -36,18 +38,21 @@ class MemberController extends Controller
         $request->validated($request->all());
 
         $member = Members::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'mobile_number' => $request->mobile_number,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
+
+            'account_code' => strtoupper(Str::random(10)),  //for account code 10 digits
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'mobile_number' => $request->get('mobile_number'), //$request->get('mobile_number'),
+            'email' => $request->get('email'),
+            'password' => bcrypt($request->get('password')), //changed from Hash::make
+
 
         ]);
         $member->save();
         return redirect()->route('memberManage')->with([
             'success' => 'Members created!'
         ]);
-        
+
         // return back()->with('success', 'Course created successfully.');
     }
 
@@ -65,7 +70,7 @@ class MemberController extends Controller
     public function edit(string $id)
     {
         $members = Members::find($id);
-        return view('Admin.Members.edit',['members' => $members]);
+        return view('Admin.Members.edit', ['members' => $members]);
     }
 
     /**
