@@ -49,6 +49,11 @@ class AppointmentController extends Controller
     public function edit(string $id)
     {
         $appt = Appointment::find($id);
+
+        if (!$appt) {
+            return redirect()->route('appointment')->with('error', 'Appointment not found.');
+        }
+
         return view('Members.Appointment.edit',['appt' => $appt]);
     }
 

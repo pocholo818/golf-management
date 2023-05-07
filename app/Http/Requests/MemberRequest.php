@@ -23,7 +23,9 @@ class MemberRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $id = $this->route('id') ?: 0;
+
+         $rules = [
 
             'first_name' => ['required'],
             'last_name' => ['required'],
@@ -37,5 +39,11 @@ class MemberRequest extends FormRequest
                     ->letters()
             ],
         ];
+        
+        if($id > 0){
+            unset($rules['password']);
+        }
+
+        return $rules;
     }
 }

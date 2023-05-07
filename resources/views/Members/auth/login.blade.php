@@ -61,7 +61,7 @@
                                 <div class="position-relative auth-pass-inputgroup mb-3">
                                     <input type="password" class="form-control pe-5" placeholder="Enter password"
                                         name="password" id="password-input">
-                                    <button
+                                                         <button
                                         class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" name="password" id="password-addon" onclick="togglePassword()"> <i
                                             class="ri-eye-fill align-middle"></i></button>
                                 </div>

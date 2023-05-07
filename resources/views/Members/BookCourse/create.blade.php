@@ -42,7 +42,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="card p-4 border mt-4">
-                <form action="{{route('bookStore')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('book-store')}}" method="post" enctype="multipart/form-data">
                     {!! csrf_field() !!}
                     <div class="form-group col-md-8" style="margin-top: 10px">
                         <label for="inputState">{{$courses->name}}</label>

@@ -97,12 +97,12 @@ color: #fff;
                         class="align-middle">Profile</span></a>
 
 
-                        <a class="dropdown-item" href="{{ route('member.logout') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
+                        <a class="dropdown-item" href="{{ route('logout-member') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
                             <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>{{ __('Logout') }}
                         </a>
 
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                <form id="logout-form" action="{{ route('logout-member') }}" method="POST" class="d-none">
                     @csrf
                 </form>
             </div>

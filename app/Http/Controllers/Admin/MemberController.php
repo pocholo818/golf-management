@@ -46,10 +46,9 @@ class MemberController extends Controller
             'email' => $request->get('email'),
             'password' => bcrypt($request->get('password')), //changed from Hash::make
 
-
         ]);
         $member->save();
-        return redirect()->route('memberManage')->with([
+        return redirect()->route('member')->with([
             'success' => 'Members created!'
         ]);
 
@@ -70,6 +69,9 @@ class MemberController extends Controller
     public function edit(string $id)
     {
         $members = Members::find($id);
+        if (!$members) {
+            return redirect()->route('member')->with('error', 'member not found.');
+        }
         return view('Admin.Members.edit', ['members' => $members]);
     }
 
@@ -81,7 +83,7 @@ class MemberController extends Controller
         $member = Members::find($id);
         $input = $request->all();
         $member->update($input);
-        return redirect()->route('memberManage')->with('success', 'Members updated!');
+        return redirect()->route('member')->with('success', 'Members updated!');
     }
 
     /**

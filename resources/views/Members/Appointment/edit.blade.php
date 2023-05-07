@@ -23,7 +23,7 @@
 </div>
 @endif
 
-<form action="{{route('appointmentUpdate',$appt->app_id)}}" method="post">
+<form action="{{route('appointment-update',$appt->app_id)}}" method="post">
     {!! csrf_field() !!}
     @method('PUT')
     <div class="form-group col-md-8" style="margin-top: 10px">

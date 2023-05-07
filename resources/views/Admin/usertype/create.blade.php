@@ -34,6 +34,7 @@
                         <option value="finance" {{ old('role') == 'finance' ? 'selected' : '' }}>Finance</option>
                         <option value="kiosk" {{ old('role') == 'kiosk' ? 'selected' : '' }}>Kiosk</option>
                         <option value="services" {{ old('role') == 'services' ? 'selected' : '' }}>Services</option>
+                        <option value="merchandise" {{ old('role') == 'merchandise' ? 'selected' : '' }}>Merchandise</option>
                     </select>
                 </div>
 

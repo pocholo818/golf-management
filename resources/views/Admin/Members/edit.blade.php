@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="modal-header">
-        <a href="{{ route('memberManage') }}">
+        <a href="{{ route('member') }}">
             <button type="button" class="btn btn-outline-danger">Back</button>
         </a>
     </div>
@@ -19,7 +19,7 @@
             </div>
         @endif
 
-        <form action="{{ route('update', $members->customer_id) }}" method="post" enctype="multipart/form-data"
+        <form action="{{ route('update-member', $members->customer_id) }}" method="post" enctype="multipart/form-data"
             class="row g-3">
             {!! csrf_field() !!}
             @method('PUT')

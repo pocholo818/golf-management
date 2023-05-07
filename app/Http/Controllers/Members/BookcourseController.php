@@ -28,6 +28,11 @@ class BookcourseController extends Controller
     public function create($id)
     {
         $courses = Course::find($id);
+        
+        if (!$courses) {
+            return redirect()->route('bookCourse')->with('error', 'bookCourse not found.');
+        }
+
         return view('Members.BookCourse.create',['courses' => $courses]);
         // return view('Members.BookCourse.create_book_course');
     }
@@ -83,6 +88,11 @@ class BookcourseController extends Controller
     public function edit(string $id)
     {
         $bookcourses = BookCourse::find($id);
+
+        if (!$bookcourses) {
+            return redirect()->route('bookCourse')->with('error', 'bookCourse not found.');
+        }
+
         return view('Members.BookCourse.edit',['bookcourses' => $bookcourses]);
     }
 

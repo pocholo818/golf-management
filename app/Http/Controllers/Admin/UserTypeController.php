@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\RoleRequest;
 use App\Models\User;
-
+use Str;
 class UserTypeController extends Controller
 {
     /**
@@ -14,7 +14,12 @@ class UserTypeController extends Controller
      */
     public function index()
     {
-        $usertype = User::paginate(10);
+        $usertype = User::where('role','finance')
+                    ->orwhere('role','kiosk')
+                    ->orwhere('role','services')
+                    ->orwhere('role','merchandise')
+                    ->paginate(10);
+        
         return view('Admin.usertype.index',['usertype' => $usertype]);
     }
 
@@ -34,10 +39,11 @@ class UserTypeController extends Controller
         $request->validated($request->all());
 
         $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'role' => $request->role,
-            'password' => bcrypt($request->password),
+            'account_code' => strtoupper(Str::random(10)),
+            'name' => $request->get('name'),
+            'email' => $request->get('email'),
+            'role' => $request->get('role'),
+            'password' => bcrypt($request->get('password')),
 
         ]);
         $user->save();
@@ -60,6 +66,9 @@ class UserTypeController extends Controller
     public function edit(string $id)
     {
         $user = User::find($id);
+        if (!$user) {
+            return redirect()->route('usertype')->with('error', 'user not found.');
+        }
         return view('Admin.usertype.edit',['user' => $user]);
     }
 

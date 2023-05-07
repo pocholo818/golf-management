@@ -32,7 +32,11 @@ class AdminController extends Controller
     {
         if(auth()->attempt(['email' => $request->get('email'), 'password' => $request->get('password')])){
             // dd(['email' => $request->get('email'), 'password' => $request->get('password')]);
-            return redirect()->route('memberManage');
+        if(in_array(auth()->user()->role,['kiosk'])){
+            return redirect()->route('transaction');
+        }
+
+            return redirect()->route('member');
         }
             // dd("warning","wrong credentials");
             return redirect()->back()->with("warning","wrong credentials");
@@ -68,6 +72,6 @@ class AdminController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('login-admin');
     }
 }

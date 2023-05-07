@@ -7,7 +7,7 @@
 <div class="row">
 <div class="col-lg-12">
 <!-- Button trigger modal -->
-<a href="{{route('create')}}">
+<a href="{{route('create-course')}}">
 <button type="button" class="btn btn-primary" >
 + Add
 </button>
@@ -47,17 +47,17 @@ $count = ($courses->currentPage() - 1) * $courses->perPage() + 1;
 <td>{{ $item->price }}</td>
 <td>{{ $item->capacity }}</td>
 <td>
-    <a href="{{route('edit', $item->course_id)}}">
+    <a href="{{route('edit-course', $item->course_id)}}">
     <button type="button" class="btn btn-primary" >
         Edit
     </button>
     </a>
 
-    <a   href="{{ route('delete', $item->course_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this course?')){document.getElementById('delete-form-{{ $item->course_id }}').submit();}">
+    <a   href="{{ route('delete-course', $item->course_id) }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this course?')){document.getElementById('delete-form-{{ $item->course_id }}').submit();}">
         <button type="submit"  class="btn btn-danger" >Delete</button>
         </a>
 
-        <form  id="delete-form-{{$item->course_id}}" action="{{ route('delete', $item->course_id) }}" method="post" style="display: none;">
+        <form  id="delete-form-{{$item->course_id}}" action="{{ route('delete-course', $item->course_id) }}" method="post" style="display: none;">
             @csrf
             @method('DELETE')
         </form>

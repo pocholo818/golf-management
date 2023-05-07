@@ -7,7 +7,7 @@
     <button type="button" class="btn btn-outline-danger" >Back</button>
     </a>
 </div>
-            <form action="{{route('update', $user->id)}}" method="post" enctype="multipart/form-data" class="row g-3">
+            <form action="{{route('update-user', $user->id)}}" method="post" enctype="multipart/form-data" class="row g-3">
                 {!! csrf_field() !!}
                 @method("PUT")
                 
