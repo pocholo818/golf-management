@@ -44,6 +44,8 @@ class UserTypeController extends Controller
             'email' => $request->get('email'),
             'role' => $request->get('role'),
             'password' => bcrypt($request->get('password')),
+            'remember_token' => Str::random(10),
+            'email_verified_at' => now(),
 
         ]);
         $user->save();
