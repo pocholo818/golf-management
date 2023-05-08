@@ -21,7 +21,7 @@ class AppointmentController extends Controller
             ->select('appointment.*', 'customers.first_name', 'customers.last_name', 'customers.email')
             ->paginate(10);
 
-        return view('Admin.Appointments.index_appointments', ['appt' => $appt]);
+        return view('Admin.appointments.index', ['appt' => $appt]);
     }
 
 

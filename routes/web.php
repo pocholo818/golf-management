@@ -83,9 +83,9 @@ Route::group(['prefix' => 'member', 'namespace' => 'Members'], function () {
     });
 
     Route::group(['prefix' => 'book-course'], function () {
-        Route::get('/', ['as' => 'bookCourse', 'uses' => "BookCourseController@index"]);
-        Route::get('/create/{id}', ['as' => 'book-create', 'uses' => "BookCourseController@create"]);
-        Route::post('/store', ['as' => 'book-store', 'uses' => "BookCourseController@store"]);
+        Route::get('/', ['as' => 'bookCourse', 'uses' => "BookcourseController@index"]);
+        Route::get('/create/{id}', ['as' => 'book-create', 'uses' => "BookcourseController@create"]);
+        Route::post('/store', ['as' => 'book-store', 'uses' => "BookcourseController@store"]);
     });
 
     Route::group(['prefix' => 'appointment'], function () {

@@ -18,7 +18,7 @@ class MemberController extends Controller
     public function index()
     {
         $members = Members::paginate(10);
-        return view('Admin.Members.index', ['members' => $members]);
+        return view('Admin.members.index', ['members' => $members]);
         // return view('Admin.Members.index_members');
     }
 
@@ -27,7 +27,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('Admin.Members.create');
+        return view('Admin.members.create');
     }
 
     /**

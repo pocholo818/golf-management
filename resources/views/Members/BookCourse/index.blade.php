@@ -10,10 +10,10 @@
 
         <div class="col-md-4">
             <div class="card" style="margin:2rem;width: 18rem;">
-                @if(isset($item->photo))
+                @if($item->photo)
                     <img src="{{ asset('public/course/'.$item->photo) }}" class="img-thumbnail" style="margin-left: auto; margin-right: auto; display: block; height:200px; width:200px;">
                     @else
-                        <img src="{{ asset('public/course/default.png') }}" class="img-thumbnail" style="margin-left: auto; margin-right: auto; display: block;">
+                        <img src="https://propertywiselaunceston.com.au/wp-content/themes/property-wise/images/no-image.png)" class="img-thumbnail" style="margin-left: auto; margin-right: auto; display: block;">
                 @endif
                 <div class="card-body">
                     <h5 class="card-title">{{$item->name}}</h5>
