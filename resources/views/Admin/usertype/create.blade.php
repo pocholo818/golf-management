@@ -25,11 +25,11 @@
                 </div>
                 <div class="">
                     <label for="formFile" class="form-label">Email</label>
-                    <input type="email" name="email" step="any" class="form-control" value="{{ old('email') }}" >
+                    <input type="email" name="email"  class="form-control" value="{{ old('email') }}" id="exampleFormControlInput1">
                 </div>
                 <div class="">
                     <label for="exampleFormControlInput1" class="form-label">Role</label>
-                    <select id="inputState" class="form-control" name="role">
+                    <select id="inputState" class="form-control form-select" name="role">
                         <option></option>
                         <option value="finance" {{ old('role') == 'finance' ? 'selected' : '' }}>Finance</option>
                         <option value="kiosk" {{ old('role') == 'kiosk' ? 'selected' : '' }}>Kiosk</option>
@@ -40,7 +40,7 @@
 
                 <div class="">
                     <label for="formFile" class="form-label">Password</label>
-                    <input type="password" name="password" step="any" class="form-control" >
+                    <input type="password" name="password"  class="form-control" id="exampleFormControlInput1">
                 </div>
 
                 <div class="modal-footer">

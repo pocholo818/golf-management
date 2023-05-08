@@ -6,12 +6,20 @@
 <div>
 <div class="row">
 <div class="col-lg-12">
+<div class="row">
+            <div class="col-10">
+                <h5 class="header mt-2">Course</h5> 
+            </div>
+            <div class="col-2">
+                <a href="{{route('create-course')}}">
+                    <button type="button" style="width:100%" class="btn btn-primary" >
+                    + Add Course
+                    </button>
+                </a>
+            </div>
+</div>
 <!-- Button trigger modal -->
-<a href="{{route('create-course')}}">
-<button type="button" class="btn btn-primary" >
-+ Add
-</button>
-</a>
+
 <div class="card p-4 border mt-4">
 <div class="row">
 <table class="table">

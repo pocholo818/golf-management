@@ -61,6 +61,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
         Route::get('/', ['as' => 'transaction', 'uses' => "TransactionController@index"]);
     });
 
+    Route::group(['prefix' => 'kiosk'], function () {
+        Route::get('/', ['as' => 'kiosk', 'uses' => "KioskController@index"]);
+    });
+
+    Route::group(['prefix' => 'services'], function () {
+        Route::get('/', ['as' => 'services', 'uses' => "ServicesController@index"]);
+    });
+
+    Route::group(['prefix' => 'merchandise'], function () {
+        Route::get('/', ['as' => 'merchandise', 'uses' => "MerchandiseController@index"]);
+    });
+    
     Route::group(['prefix' => 'usertype'], function () {
         Route::get('/', ['as' => 'usertype', 'uses' => "UserTypeController@index"]);
         Route::get('/create', ['as' => 'create-user', 'uses' => "UserTypeController@create"]);
@@ -105,3 +117,5 @@ Route::group(['prefix' => 'member', 'namespace' => 'Members'], function () {
         Route::put('/update/{id}', ['as' => 'profile-update',  'uses' => "ProfileController@update"]);
     });
 });
+
+

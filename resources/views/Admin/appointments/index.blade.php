@@ -2,12 +2,12 @@
 
 @section('content')
 <div class="container">
+<h5 class="header mt-2">Appointments</h5>
 <div class="live-preview">
 <div>
 <div class="row">
 <div class="col-lg-12">
     <a href="">
-        <h5>Appointments</h5>
         </a>
         
         <div class="card p-4 border mt-4">

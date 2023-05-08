@@ -8,7 +8,7 @@
                         <div class="col-lg-12">
                             <div class="card p-4 border mt-4">
                                 <div class="row">
-                                    <h5>Finance Page is working</h5>
+                                    <h5>Kiosk Page is working</h5>
                                 </div>
 
                             </div>

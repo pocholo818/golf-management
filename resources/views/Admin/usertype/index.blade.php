@@ -6,12 +6,20 @@
 <div>
 <div class="row">
     <div class="col-lg-12">
-        <!-- Button trigger modal -->
+    <div class="row">
+            <div class="col-10">
+                <h5 class="header mt-2">User Type</h5> 
+            </div>
+            <div class="col-2">
         <a href="{{ route('create-user') }}">
-            <button type="button" class="btn btn-primary">
+            <button type="button" style="width:100%" class="btn btn-primary">
                 + Add User
             </button>
         </a>
+
+        </div>
+    </div>
+        <!-- Button trigger modal -->
 
         <div class="card p-4 border mt-4">
             <div class="row">

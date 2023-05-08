@@ -89,7 +89,7 @@ color: #fff;
             <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="d-flex align-items-center">
-                    <span class="text-start ms-xl-2">
+                    <span class="text-start ms-xl-0">
                         <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">{{ Auth::user()->name }}</span>
                     </span>
                 </span>
@@ -144,47 +144,71 @@ color: #fff;
                             <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Members</span>
                         </a>
                     </li>
-                    @endif
 
-                    @if(auth()->user()->role === "admin")
                     <li class="nav-item">
                         <a class="nav-link menu-link text-white" href="{{route('appointments')}}" >
                             <i class="ri-apps-2-line"></i> <span data-key="t-apps">Appointments</span>
                         </a>
                     </li>
-                    @endif
 
-                    @if(auth()->user()->role === "admin")
                     <li class="nav-item">
                         <a class="nav-link menu-link text-white" href="{{route('course')}}">
                             <i class="ri-layout-3-line"></i> <span data-key="t-layouts">Golf Course</span>
                         </a>
                     </li>
-                    @endif
-
-                    @if(auth()->user()->role === "admin")
+<!-- 
                     <li class="nav-item" >
                         <a class="nav-link menu-link text-white" href="{{route('schedules')}}">
                             <i class="ri-layout-3-line"></i> <span data-key="t-layouts">Schedules</span>
                         </a>
-                    </li>
-                    @endif
+                    </li> -->
 
-                    @if(auth()->user()->role === "kiosk")
-                    <li class="nav-item" >
-                        <a class="nav-link menu-link text-white" href="{{route('transaction')}}">
-                            <i class="ri-pages-line"></i> <span data-key="t-pages">Transactions</span>
-                        </a>
-                    </li>
-                    @endif
-
-                    @if(auth()->user()->role === "admin")
                     <li class="nav-item" >
                         <a class="nav-link menu-link text-white" href="{{route('usertype')}}">
                             <i class="ri-pages-line"></i> <span data-key="t-pages">User Type</span>
                         </a>
                     </li>
                     @endif
+
+                    @if(auth()->user()->role === "finance")
+                    <li class="nav-item" >
+                        <a class="nav-link menu-link text-white" href="{{route('transaction')}}">
+                            <i class="ri-pages-line"></i> <span data-key="t-pages">Transactions</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" >
+                        <a class="nav-link menu-link text-white" href="{{route('transaction')}}">
+                            <i class="ri-pages-line"></i> <span data-key="t-pages">Invoice</span>
+                        </a>
+                    </li>
+                    @endif
+
+                    @if(auth()->user()->role === "kiosk")
+                    <li class="nav-item" >
+                        <a class="nav-link menu-link text-white" href="{{route('kiosk')}}">
+                            <i class="ri-pages-line"></i> <span data-key="t-pages">kiosk</span>
+                        </a>
+                    </li>
+                    @endif
+
+
+                    @if(auth()->user()->role === "services")
+                    <li class="nav-item" >
+                        <a class="nav-link menu-link text-white" href="{{route('services')}}">
+                            <i class="ri-pages-line"></i> <span data-key="t-pages">Services</span>
+                        </a>
+                    </li>
+                    @endif
+
+                    @if(auth()->user()->role === "merchandise")
+                    <li class="nav-item" >
+                        <a class="nav-link menu-link text-white" href="{{route('merchandise')}}">
+                            <i class="ri-pages-line"></i> <span data-key="t-pages">Merchandise</span>
+                        </a>
+                    </li>
+                    @endif
+
 
                 </ul>
             </div>

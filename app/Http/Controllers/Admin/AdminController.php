@@ -32,8 +32,17 @@ class AdminController extends Controller
     {
         if(auth()->attempt(['email' => $request->get('email'), 'password' => $request->get('password')])){
             // dd(['email' => $request->get('email'), 'password' => $request->get('password')]);
-        if(in_array(auth()->user()->role,['kiosk'])){
+        if(in_array(auth()->user()->role,['finance'])){
             return redirect()->route('transaction');
+        }
+        if(in_array(auth()->user()->role,['kiosk'])){
+            return redirect()->route('kiosk');
+        }
+        if(in_array(auth()->user()->role,['services'])){
+            return redirect()->route('services');
+        }
+        if(in_array(auth()->user()->role,['merchandise'])){
+            return redirect()->route('merchandise');
         }
 
             return redirect()->route('member');

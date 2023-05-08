@@ -72,7 +72,7 @@ class MemberController extends Controller
         if (!$members) {
             return redirect()->route('member')->with('error', 'member not found.');
         }
-        return view('Admin.Members.edit', ['members' => $members]);
+        return view('Admin.members.edit', ['members' => $members]);
     }
 
     /**
