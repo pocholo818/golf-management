@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class AuthenticateAdmin
+class AdminOnly
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,13 @@ class AuthenticateAdmin
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::user()) {
-            return redirect()->route('member');
+        //is in Admin Table
+        if (!Auth::user() || !in_array(Auth::user()->type, ['kiosk', 'finance', 'services', 'merchandise'])) { //check if no user logged in
+            return redirect()->route('appointments');
+        }
+
+        if (Auth::guard('member')->user()) {
+            return redirect()->route('profile');
         }
         return $next($request);
     }
