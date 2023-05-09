@@ -14,8 +14,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $profile = Members::where('customer_id',auth('member')->user()->customer_id)->get();
-        return view('Members.Profile.index',['profile' => $profile]);
+        // $profile = Members::where('customer_id',auth('member')->user()->customer_id)->first();
+        // return view('Members.Profile.index',['profile' => $profile]);
+        return view('Members.Profile.index');
     }
 
     /**
