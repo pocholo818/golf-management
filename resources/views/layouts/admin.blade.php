@@ -187,7 +187,7 @@ color: #fff;
                     @if(auth()->user()->role === "kiosk")
                     <li class="nav-item" >
                         <a class="nav-link menu-link text-white" href="{{route('kiosk')}}">
-                            <i class="ri-pages-line"></i> <span data-key="t-pages">kiosk</span>
+                            <i class="ri-pages-line"></i> <span data-key="t-pages">Transaction</span>
                         </a>
                     </li>
                     @endif

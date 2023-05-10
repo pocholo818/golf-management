@@ -76,7 +76,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
             Route::get('/', ['as' => 'merchandise', 'uses' => "MerchandiseController@index"]);
         });
 
-        Route::group(['prefix' => 'usertype'], function () {
+        Route::group(['prefix' => 'accounts'], function () {
             Route::get('/', ['as' => 'usertype', 'uses' => "UserTypeController@index"]);
             Route::get('/create', ['as' => 'create-user', 'uses' => "UserTypeController@create"]);
             Route::post('/create', ['as' => 'store-user', 'uses' => "UserTypeController@store"]);
