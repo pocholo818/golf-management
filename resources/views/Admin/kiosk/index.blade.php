@@ -6,10 +6,10 @@
 <div>
 <div class="row">
 
-    <div class="col-lg-12">      
+    <div class="col-lg-12">
         <div class="row">
             <div class="col-10">
-                <h5 class="header mt-2">Kiosk</h5> 
+                <h5 class="header mt-2">Kiosk</h5>
             </div>
             <div class="col-2">
                 <a href="{{ route('create-member') }}">
@@ -18,10 +18,10 @@
                     </button>
                 </a>
             </div>
-        </div>  
-        
+        </div>
+
         <!-- Button trigger modal -->
-        
+
 
 
 
@@ -29,10 +29,11 @@
             <div class="row">
 
 
-                <table class="table">
-                    <thead>
+                <table class="table" style="text-align: center">
+                    <thead >
                         <tr>
                             <th scope="col">#</th>
+                            <th scope="col">Member Name</th>
                             <th scope="col">Member Account ID</th>
                             <th scope="col">Total</th>
                             <th scope="col">Remarks</th>
