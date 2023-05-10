@@ -70,7 +70,7 @@ class Kernel extends HttpKernel
         // 'admin.only' => \App\Http\Middleware\AdminOnly::class,
         'admin.auth' => \App\Http\Middleware\RedirectIfAuthenticatedAdmin::class,
 
-        'member.auth' => \App\Http\Middleware\AuthenticateMember::class,
         'member.guest' => \App\Http\Middleware\AuthenticateMember::class,
+        'member.auth' => \App\Http\Middleware\RedirectIfAuthenticatedMember::class,
     ];
 }

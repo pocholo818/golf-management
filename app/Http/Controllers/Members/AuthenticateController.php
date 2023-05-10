@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use Auth;
 
-class MemberController extends Controller
+class AuthenticateController extends Controller
 {
     /**
      * Display a listing of the resource.

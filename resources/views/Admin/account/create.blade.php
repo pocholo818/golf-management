@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="modal-header" >
-    <a href="{{route('usertype')}}">
+    <a href="{{route('account')}}">
     <button type="button" class="btn btn-outline-danger" >Back</button>
     </a>
 </div>

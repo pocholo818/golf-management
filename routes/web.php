@@ -18,25 +18,24 @@ Route::get('/', function () {
 });
 
 //Admin Routes
-
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
 
     Route::group(['prefix' => 'login', 'middleware' => 'admin.guest'], function () {
-        Route::get('/', ['as' => 'login-admin', 'uses' => 'AdminController@login']);
-        Route::post('/authenticated', ['as' => 'authenticated', 'uses' => 'AdminController@authenticated']);
+        Route::get('/', ['as' => 'login_admin', 'uses' => 'AuthenticateController@login']);
+        Route::post('/authenticated', ['as' => 'authenticated', 'uses' => 'AuthenticateController@authenticated']);
     });
 
     //Authenticated Routes
     Route::group(['middleware' => ['admin.auth']], function () {
-        Route::post('/logout', ['as' => 'logout-admin', 'uses' => 'AdminController@logout',]);
+        Route::post('/logout', ['as' => 'logout_admin', 'uses' => 'AuthenticateController@logout',]);
 
         Route::group(['prefix' => 'member',], function () {
             Route::get('/', ['as' => 'member', 'uses' => "MemberController@index"]);
-            Route::get('/create', ['as' => 'create-member', 'uses' => "MemberController@create"]);
-            Route::post('/create', ['as' => 'store-member', 'uses' => "MemberController@store"]);
-            Route::get('/edit/{id}', ['as' => 'edit-member', 'uses' => "MemberController@edit"]);
-            Route::put('/update/{id}', ['as' => 'update-member', 'uses' => "MemberController@update"]);
-            Route::delete('/delete/{id}', ['as' => 'delete-member', 'uses' => "MemberController@destroy"]);
+            Route::get('/create', ['as' => 'create_member', 'uses' => "MemberController@create"]);
+            Route::post('/create', ['as' => 'store_member', 'uses' => "MemberController@store"]);
+            Route::get('/edit/{id}', ['as' => 'edit_member', 'uses' => "MemberController@edit"]);
+            Route::put('/update/{id}', ['as' => 'update_member', 'uses' => "MemberController@update"]);
+            Route::delete('/delete/{id}', ['as' => 'delete_member', 'uses' => "MemberController@destroy"]);
         });
 
         Route::group(['prefix' => 'appointment'], function () {
@@ -48,12 +47,12 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
         //Crud golf course
         Route::group(['prefix' => 'course'], function () {
             Route::get('/', ['as' => 'course', 'uses' => "CourseController@index"]);
-            Route::get('/create', ['as' => 'create-course', 'uses' => "CourseController@create"]);
+            Route::get('/create', ['as' => 'create_course', 'uses' => "CourseController@create"]);
             // Route::namespace('courseCreate')->get('/create', "Admin\CourseController@create");
-            Route::post('/create', ['as' => 'store-course', 'uses' => "CourseController@store"]);
-            Route::get('/edit/{id}', ['as' => 'edit-course', 'uses' => "CourseController@edit"]);
-            Route::put('/update/{id}', ['as' => 'update-course', 'uses' => "CourseController@update"]);
-            Route::delete('/delete/{id}', ['as' => 'delete-course', 'uses' => "CourseController@destroy"]);
+            Route::post('/create', ['as' => 'store_course', 'uses' => "CourseController@store"]);
+            Route::get('/edit/{id}', ['as' => 'edit_course', 'uses' => "CourseController@edit"]);
+            Route::put('/update/{id}', ['as' => 'update_course', 'uses' => "CourseController@update"]);
+            Route::delete('/delete/{id}', ['as' => 'delete_course', 'uses' => "CourseController@destroy"]);
         });
 
         Route::group(['prefix' => 'schedules'], function () {
@@ -77,37 +76,45 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
         });
 
         Route::group(['prefix' => 'accounts'], function () {
-            Route::get('/', ['as' => 'usertype', 'uses' => "UserTypeController@index"]);
-            Route::get('/create', ['as' => 'create-user', 'uses' => "UserTypeController@create"]);
-            Route::post('/create', ['as' => 'store-user', 'uses' => "UserTypeController@store"]);
-            Route::get('/edit/{id}', ['as' => 'edit-user', 'uses' => "UserTypeController@edit"]);
-            Route::put('/update/{id}', ['as' => 'update-user', 'uses' => "UserTypeController@update"]);
-            Route::delete('/delete/{id}', ['as' => 'delete-user', 'uses' => "UserTypeController@destroy"]);
+            Route::get('/', ['as' => 'account', 'uses' => "AccountTypeController@index"]);
+            Route::get('/create', ['as' => 'create_user', 'uses' => "AccountTypeController@create"]);
+            Route::post('/create', ['as' => 'store_user', 'uses' => "AccountTypeController@store"]);
+            Route::get('/edit/{id}', ['as' => 'edit_user', 'uses' => "AccountTypeController@edit"]);
+            Route::put('/update/{id}', ['as' => 'update_user', 'uses' => "AccountTypeController@update"]);
+            Route::delete('/delete/{id}', ['as' => 'delete_user', 'uses' => "AccountTypeController@destroy"]);
         });
+
+        Route::group(['prefix' => 'invoice'], function () {
+            Route::get('/', ['as' => 'admin_invoice', 'uses' => "InvoiceController@index"]);
+        });
+
     });
 });
-
-
 
 //Members Routes
 Route::group(['prefix' => 'member', 'namespace' => 'Members'], function () {
 
-    Route::group(['prefix' => 'login'], function () {
-        Route::get('/', ['as' => 'login-member', 'uses' => 'MemberController@login']);
-        Route::post('/authenticate', ['as' => 'authenticate', 'uses' => 'MemberController@authenticate']);
-        Route::post('/logout', ['as' => 'logout-member', 'uses' => 'MemberController@logout']);
+    Route::group(['prefix' => 'login', 'middleware' => 'member.guest'], function () {
+        Route::get('/', ['as' => 'login-member', 'uses' => 'AuthenticateController@login']);
+        Route::post('/authenticate', ['as' => 'authenticate', 'uses' => 'AuthenticateController@authenticate']);
+       
     });
 
+    //Authenticated Routes
+      Route::group(['middleware' => ['member.auth']], function () {
+        Route::post('/logout', ['as' => 'logout-member', 'uses' => 'AuthenticateController@logout']);
+
     Route::group(['prefix' => 'book-course'], function () {
-        Route::get('/', ['as' => 'bookCourse', 'uses' => "BookcourseController@index"]);
-        Route::get('/create/{id}', ['as' => 'book-create', 'uses' => "BookcourseController@create"]);
-        Route::post('/store', ['as' => 'book-store', 'uses' => "BookcourseController@store"]);
+        Route::get('/', ['as' => 'bookCourse', 'uses' => "CourseController@index"]);
+
     });
 
     Route::group(['prefix' => 'appointment'], function () {
         Route::get('/', ['as' => 'appointment', 'uses' => "AppointmentController@index"]);
         Route::get('/edit/{id}', ['as' => 'appointment-edit', 'uses' => "AppointmentController@edit"]);
         Route::put('/update/{id}', ['as' => 'appointment-update', 'uses' => "AppointmentController@update"]);
+        Route::get('/create/{id}', ['as' => 'appointment-create', 'uses' => "AppointmentController@create"]);
+        Route::post('/store', ['as' => 'appointment-store', 'uses' => "AppointmentController@store"]);
         Route::delete('/delete/{id}', ['as' => 'appointment-delete', 'uses' => "AppointmentController@destroy"]);
     });
 
@@ -120,4 +127,5 @@ Route::group(['prefix' => 'member', 'namespace' => 'Members'], function () {
         Route::get('/edit/{id}', ['as' => 'profile-edit', 'uses' => "ProfileController@edit"]);
         Route::put('/update/{id}', ['as' => 'profile-update',  'uses' => "ProfileController@update"]);
     });
+      });
 });

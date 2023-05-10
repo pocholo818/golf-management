@@ -37,8 +37,8 @@
                     <tr>
                     <th scope="row">{{ $count++ }}</th>
                     <td>{{ $item->name }}</td>
-                    <td>{{ $item->first_name }} {{ $item->last_name }}</td>
-                    <td>{{ $item->email }}</td>
+                    <td>{{ $item->customer->first_name }} {{ $item->customer->last_name }}</td>
+                    <td>{{ $item->customer->email }}</td>
                     <td>{{ $item->guests }}</td>
                     <td>{{ $item->date }}</td>
                     <td>{{ $item->time }}</td>

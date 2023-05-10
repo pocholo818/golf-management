@@ -15,9 +15,6 @@
 
         <!-- Button trigger modal -->
 
-
-
-
         <div class="card p-4 border mt-4">
             <div class="row">
 

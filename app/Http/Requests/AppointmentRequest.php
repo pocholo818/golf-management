@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Validator;
+
 
 class AppointmentRequest extends FormRequest
 {
@@ -23,10 +25,10 @@ class AppointmentRequest extends FormRequest
     {
         return [
             'name' => ['nullable'],
-            'capacity' => ['nullable'], 
-            'date' => ['required'],
-            'time' => ['required'], 
-            'guests' => ['required'], 
+            'capacity' => ['nullable'],
+            'date' => ['required', 'date', 'after_or_equal:' . now()->toDateString()],
+            'time' => ['required'],
+            'guests' => ['required'],            
         ];
     }
 }

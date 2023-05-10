@@ -19,7 +19,7 @@
             </div>
         @endif
 
-        <form action="{{ route('update-member', $members->customer_id) }}" method="post" enctype="multipart/form-data"
+        <form action="{{ route('update_member', $members->customer_id) }}" method="post" enctype="multipart/form-data"
             class="row g-3">
             {!! csrf_field() !!}
             @method('PUT')

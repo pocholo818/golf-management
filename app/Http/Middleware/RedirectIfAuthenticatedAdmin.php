@@ -17,7 +17,7 @@ class RedirectIfAuthenticatedAdmin
     public function handle(Request $request, Closure $next): Response
     {
         if (!Auth::user()) {
-            return redirect()->route('admin.login');
+            return redirect()->route('login_admin');
         }
         return $next($request);
     }

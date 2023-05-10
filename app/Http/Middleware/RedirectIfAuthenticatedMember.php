@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 
-class AuthenticateMember
+class RedirectIfAuthenticatedMember
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class AuthenticateMember
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::guard('member')->user()){
-            return redirect()->route('bookCourse');
+        if (!Auth::guard('member')->user()) {
+            return redirect()->route('login-member');
         }
         return $next($request);
     }

@@ -15,11 +15,14 @@ class AppointmentController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $appt = Appointment::leftJoin('customers', 'customers.customer_id', '=', 'appointment.user_id')
-            ->select('appointment.*', 'customers.first_name', 'customers.last_name', 'customers.email')
-            ->paginate(10);
+        $keyword = $request->get('keyword');
+        $appt = Appointment::whereHas('customer', function($query) use($keyword){
+            return $query->where('first_name', 'last_name', 'email','LIKE','%($keyword)%');
+        })
+                ->orderBy('app_id','ASC')
+                ->paginate(10);
 
         return view('Admin.appointments.index', ['appt' => $appt]);
     }

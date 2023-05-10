@@ -3,11 +3,11 @@
 @section('content')
 
 <div class="modal-header" >
-    <a href="{{route('usertype')}}">
+    <a href="{{route('account')}}">
     <button type="button" class="btn btn-outline-danger" >Back</button>
     </a>
 </div>
-            <form action="{{route('update-user', $user->id)}}" method="post" enctype="multipart/form-data" class="row g-3">
+            <form action="{{route('update_user', $user->id)}}" method="post" enctype="multipart/form-data" class="row g-3">
                 {!! csrf_field() !!}
                 @method("PUT")
                 
@@ -32,10 +32,10 @@
                     <label for="exampleFormControlInput1" class="form-label">Role</label>
                     <select id="inputState" class="form-control form-select" value="{{ $user->role }}" name="role">
                         <option></option>
-                        <option value="finance" @if($user->role == 'finance') selected>Finance</option>
-                        <option value="kiosk" @elseif($user->role == 'kiosk') selected>Kiosk</option>
-                        <option value="services" @elseif($user->role == 'services') selected>Services</option>
-                        <option value="merchandise" @elseif($user->role == 'merchandise') selected @endif>Merchandise</option>
+                        <option value="finance" @if($user->role == 'finance') selected @endif>Finance</option>
+                        <option value="kiosk" @if($user->role == 'kiosk') selected @endif>Kiosk</option>
+                        <option value="services" @if($user->role == 'services') selected @endif>Services</option>
+                        <option value="merchandise" @if($user->role == 'merchandise') selected @endif>Merchandise</option>
                     </select>
                 </div>
 

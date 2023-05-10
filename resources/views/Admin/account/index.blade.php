@@ -8,10 +8,10 @@
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-10">
-                                <h5 class="header mt-2">User Type</h5>
+                                <h5 class="header mt-2">Account Type</h5>
                             </div>
                             <div class="col-2">
-                                <a href="{{ route('create-user') }}">
+                                <a href="{{ route('create_user') }}">
                                     <button type="button" style="width:100%" class="btn btn-primary">
                                         + Add User
                                     </button>
@@ -47,18 +47,18 @@
                                                 <td>{{ $item->email }}</td>
                                                 <td>{{ $item->role }}</td>
                                                 <td>
-                                                    <a href="{{ route('edit-user', $item->id) }}">
+                                                    <a href="{{ route('edit_user', $item->id) }}">
                                                         <button type="button" class="btn btn-primary">
                                                             Edit
                                                         </button>
                                                     </a>
-                                                    <a href="{{ route('delete-user', $item->id) }}"
+                                                    <a href="{{ route('delete_user', $item->id) }}"
                                                         onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this user?')){document.getElementById('delete-form-{{ $item->id }}').submit();}">
                                                         <button type="submit" class="btn btn-danger">Delete</button>
                                                     </a>
 
                                                     <form id="delete-form-{{ $item->id }}"
-                                                        action="{{ route('delete-user', $item->id) }}" method="post"
+                                                        action="{{ route('delete_user', $item->id) }}" method="post"
                                                         style="display: none;">
                                                         @csrf
                                                         @method('DELETE')

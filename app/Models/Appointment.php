@@ -18,4 +18,8 @@ class Appointment extends Model
         'time',
         'guests',
     ];
+
+    public function customer(){
+        return $this->belongsTo('App\Models\Members', 'user_id','customer_id'); 
+    }
 }

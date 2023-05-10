@@ -7,20 +7,21 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RoleRequest;
 use App\Models\User;
 use Str;
-class UserTypeController extends Controller
+
+class AccountTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $usertype = User::where('role','finance')
-                    ->orwhere('role','kiosk')
-                    ->orwhere('role','services')
-                    ->orwhere('role','merchandise')
+        $usertype = User::whereIn('role',
+                    ['finance' ,'kiosk' ,'services', 'merchandise'])
                     ->paginate(10);
-        
-        return view('Admin.usertype.index',['usertype' => $usertype]);
+            if (!$usertype) {
+             return redirect()->route('account')->with('error', 'user not found.');
+            }
+        return view('Admin.account.index',['usertype' => $usertype]);
     }
 
     /**
@@ -28,7 +29,7 @@ class UserTypeController extends Controller
      */
     public function create()
     {
-        return view('Admin.usertype.create');
+        return view('Admin.account.create');
     }
 
     /**
@@ -49,7 +50,7 @@ class UserTypeController extends Controller
 
         ]);
         $user->save();
-        return redirect()->route('usertype')->with([
+        return redirect()->route('account')->with([
             'success' => 'Members created!'
         ]);
     }
@@ -69,9 +70,9 @@ class UserTypeController extends Controller
     {
         $user = User::find($id);
         if (!$user) {
-            return redirect()->route('usertype')->with('error', 'user not found.');
+            return redirect()->route('account')->with('error', 'user not found.');
         }
-        return view('Admin.usertype.edit',['user' => $user]);
+        return view('Admin.account.edit',['user' => $user]);
     }
 
     /**
@@ -82,7 +83,7 @@ class UserTypeController extends Controller
         $user = User::find($id);
         $input = $request->all();
         $user->update($input);
-        return redirect()->route('usertype')->with('success', 'Members updated!');
+        return redirect()->route('account')->with('success', 'Members updated!');
     }
 
     /**

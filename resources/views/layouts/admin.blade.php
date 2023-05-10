@@ -102,12 +102,12 @@ color: #fff;
                         class="align-middle">Profile</span></a> -->
 
 
-                        <a class="dropdown-item" href="{{ route('logout-admin') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
+                        <a class="dropdown-item" href="{{ route('logout_admin') }}" onclick="event.preventDefault(); if(confirm('Are you sure you want to logout?')) { document.getElementById('logout-form').submit(); }">
                             <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>{{ __('Logout') }}
                         </a>
 
 
-                <form id="logout-form" action="{{ route('logout-admin') }}" method="POST" class="d-none">
+                <form id="logout-form" action="{{ route('logout_admin') }}" method="POST" class="d-none">
                     @csrf
                 </form>
             </div>
@@ -164,13 +164,14 @@ color: #fff;
                     </li> -->
 
                     <li class="nav-item" >
-                        <a class="nav-link menu-link text-white" href="{{route('usertype')}}">
-                            <i class="ri-pages-line"></i> <span data-key="t-pages">User Type</span>
+                        <a class="nav-link menu-link text-white" href="{{route('account')}}">
+                            <i class="ri-pages-line"></i> <span data-key="t-pages">Account Type</span>
                         </a>
                     </li>
                     @endif
 
                     @if(auth()->user()->role === "finance")
+
                     <li class="nav-item" >
                         <a class="nav-link menu-link text-white" href="{{route('transaction')}}">
                             <i class="ri-pages-line"></i> <span data-key="t-pages">Transactions</span>
@@ -178,10 +179,11 @@ color: #fff;
                     </li>
 
                     <li class="nav-item" >
-                        <a class="nav-link menu-link text-white" href="{{route('transaction')}}">
+                        <a class="nav-link menu-link text-white" href="{{route('admin_invoice')}}">
                             <i class="ri-pages-line"></i> <span data-key="t-pages">Invoice</span>
                         </a>
                     </li>
+
                     @endif
 
                     @if(auth()->user()->role === "kiosk")

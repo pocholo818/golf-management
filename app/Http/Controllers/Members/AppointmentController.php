@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Members;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Appointment;
+use App\Models\Course;
 use App\Http\Requests\AppointmentRequest;
+use Illuminate\Support\Facades\Session;
 
 class AppointmentController extends Controller
 {
@@ -22,17 +24,37 @@ class AppointmentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $courses = Course::find($id);
+        
+        if (!$courses) {
+            return redirect()->route('bookCourse')->with('error', 'bookCourse not found.');
+        }
+
+        return view('Members.BookCourse.create',['courses' => $courses]);
+        // return view('Members.BookCourse.create_book_course');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AppointmentRequest $request)
     {
-        //
+        $request->validated($request->all());
+        
+            $appt = Appointment::create([
+                'name' => $request->name,
+                'capacity' => $request->capacity,
+                'date' => $request->date,
+                'time' => $request->time,
+                'guests' => $request->guests,
+                'user_id' => auth('member')->user()->customer_id,
+                'status' => $request->status,
+            ]);
+    
+            Session::flash('success', 'Appointment created!');
+            return redirect()->route('bookCourse');        
     }
 
     /**
