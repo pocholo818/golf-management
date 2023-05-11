@@ -5,16 +5,19 @@
     <div class="live-preview">
         <div class="card">
             <div class="row no-gutters">
+            <h1 style="text-align: center; padding-top: 10px; "> Profile </h1>
                 <div class="col-4">
-                    <img class="card-img" src="{{ asset('images/dp.png') }}">
+                
+                    <img class="card-img" src="{{ asset('images/dp.png') }}" style="border-radius: 60%; width: 70%; margin-left: 21%; padding: 5%;">
                 </div>
 
                 <div class="col-8">
                     <div class="card-body">
-                        <h5 class="card-title">First Name: {{ auth('member')->user()->first_name }}</h5>
-                        <h5 class="card-title">Last Name: {{ auth('member')->user()->last_name }}</h5>
-                        <h5 class="card-title">Mobile Number: {{ auth('member')->user()->mobile_number }}</h5>
-                        <h5 class="card-title">Email: {{ auth('member')->user()->email }}</h5>
+                        
+                        <h5 class="card-title" style="padding-bottom: 10px;">First Name: {{ auth('member')->user()->first_name }}</h5>
+                        <h5 class="card-title" style="padding-bottom: 10px;">Last Name: {{ auth('member')->user()->last_name }}</h5>
+                        <h5 class="card-title" style="padding-bottom: 10px;">Mobile Number: {{ auth('member')->user()->mobile_number }}</h5>
+                        <h5 class="card-title" style="padding-bottom: 20px;">Email: {{ auth('member')->user()->email }}</h5>
 
                        <a type="button" class="btn btn-primary" href="{{ route('profile-edit', auth('member')->user()->customer_id) }}">Edit Profile</a>
 
