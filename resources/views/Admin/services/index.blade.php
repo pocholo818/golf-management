@@ -12,7 +12,7 @@
                 <h5 class="header mt-2">Services</h5>
             </div>
             <div class="col-2">
-                <a href="{{ route('create-member') }}">
+                <a href="{{route('create_services')}}">
                     <button type="button" style="width:100%"  class="btn btn-primary">
                         + Create
                     </button>
@@ -20,10 +20,7 @@
             </div>
         </div>
 
-        <!-- Button trigger modal -->
-
-
-
+        {{-- {{ Button trigger modal}} --}}
 
         <div class="card p-4 border mt-4">
             <div class="row">
@@ -37,34 +34,34 @@
                             <th scope="col">Member Account ID</th>
                             <th scope="col">Total</th>
                             <th scope="col">Remarks</th>
-                            {{-- <th scope="col">Action</th> --}}
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
 
-                    {{-- <tbody>
+                    <tbody>
                         @php
-                            $count = ($members->currentPage() - 1) * $members->perPage() + 1;
+                            $count = ($service->currentPage() - 1) * $service->perPage() + 1;
                         @endphp
-                        @foreach ($members as $item)
+                        @foreach ($service as $item)
                             <tr>
                                 <th scope="row">{{ $count++ }}</th>
-                                <td>{{ $item->first_name }}</td>
-                                <td>{{ $item->last_name }}</td>
-                                <td>{{ $item->mobile_number }}</td>
-                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->account_id }}</td>
+                                <td>{{ $item->total }}</td>
+                                <td>{{ $item->remarks }}</td>
                                 <td>
-                                    <a href="{{ route('edit-member', $item->customer_id) }}">
+                                    <a href="{{ route('edit_services', $item->id) }}">
                                         <button type="button" class="btn btn-primary">
                                             Edit
                                         </button>
                                     </a>
-                                    <a href="{{ route('delete-member', $item->customer_id) }}"
-                                        onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this member?')){document.getElementById('delete-form-{{ $item->customer_id }}').submit();}">
+                                    <a href="{{ route('delete_services', $item->id) }}"
+                                        onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this services?')){document.getElementById('delete-form-{{ $item->id }}').submit();}">
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </a>
 
-                                    <form id="delete-form-{{ $item->customer_id }}"
-                                        action="{{ route('delete-member', $item->customer_id) }}" method="post"
+                                    <form id="delete-form-{{ $item->id }}"
+                                        action="{{ route('delete_services', $item->id) }}" method="post"
                                         style="display: none;">
                                         @csrf
                                         @method('DELETE')
@@ -72,10 +69,10 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody> --}}
+                    </tbody>
 
                 </table>
-                {{-- {!! $members->render() !!} --}}
+                {!! $service->render() !!}
             </div>
 
         </div>

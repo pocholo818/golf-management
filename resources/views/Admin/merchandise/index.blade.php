@@ -12,7 +12,7 @@
                 <h5 class="header mt-2">Merchandise</h5>
             </div>
             <div class="col-2">
-                <a href="{{ route('create-member') }}">
+                <a href="{{ route('create_merchandise') }}">
                     <button type="button" style="width:100%"  class="btn btn-primary">
                         + Create
                     </button>
@@ -41,30 +41,29 @@
                         </tr>
                     </thead>
 
-                    {{-- <tbody>
+                    <tbody>
                         @php
-                            $count = ($members->currentPage() - 1) * $members->perPage() + 1;
+                            $count = ($prod->currentPage() - 1) * $prod->perPage() + 1;
                         @endphp
-                        @foreach ($members as $item)
+                        @foreach ($prod as $item)
                             <tr>
                                 <th scope="row">{{ $count++ }}</th>
-                                <td>{{ $item->first_name }}</td>
-                                <td>{{ $item->last_name }}</td>
-                                <td>{{ $item->mobile_number }}</td>
-                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->account_id }}</td>
+                                <td>{{ $item->total }}</td>
                                 <td>
-                                    <a href="{{ route('edit-member', $item->customer_id) }}">
+                                    <a href="{{ route('edit_merchandise', $item->id) }}">
                                         <button type="button" class="btn btn-primary">
                                             Edit
                                         </button>
                                     </a>
-                                    <a href="{{ route('delete-member', $item->customer_id) }}"
-                                        onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this member?')){document.getElementById('delete-form-{{ $item->customer_id }}').submit();}">
+                                    <a href="{{ route('delete_merchandise', $item->id) }}"
+                                        onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this member?')){document.getElementById('delete-form-{{ $item->id }}').submit();}">
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </a>
 
-                                    <form id="delete-form-{{ $item->customer_id }}"
-                                        action="{{ route('delete-member', $item->customer_id) }}" method="post"
+                                    <form id="delete-form-{{ $item->id }}"
+                                        action="{{ route('delete_merchandise', $item->id) }}" method="post"
                                         style="display: none;">
                                         @csrf
                                         @method('DELETE')
@@ -72,10 +71,10 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </tbody> --}}
+                    </tbody>
 
                 </table>
-                {{-- {!! $members->render() !!} --}}
+                {!! $prod->render() !!}
             </div>
 
         </div>
