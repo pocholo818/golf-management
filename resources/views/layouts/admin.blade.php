@@ -195,7 +195,7 @@ color: #fff;
                     @endif
 
 
-                    @if(auth()->user()->role === "services")
+                    @if(auth()->user()->role === "service")
                     <li class="nav-item" >
                         <a class="nav-link menu-link text-white" href="{{route('services')}}">
                             <i class="ri-pages-line"></i> <span data-key="t-pages">Services</span>

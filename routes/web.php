@@ -63,10 +63,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
             Route::get('/', ['as' => 'transaction', 'uses' => "TransactionController@index"]);
         });
 
-        Route::group(['prefix' => 'kiosk'], function () {
-            Route::get('/', ['as' => 'kiosk', 'uses' => "KioskController@index"]);
-        });
-
         Route::group(['prefix' => 'services'], function () {
             Route::get('/', ['as' => 'services', 'uses' => "ServicesController@index"]);
             Route::get('/create', ['as' => 'create_services', 'uses' => "ServicesController@create"]);

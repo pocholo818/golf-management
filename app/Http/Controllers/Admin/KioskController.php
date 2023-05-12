@@ -14,8 +14,8 @@ class KioskController extends Controller
      */
     public function index()
     {
-        $prod = Kiosk::paginate(10);
-        return view('Admin.kiosk.index',['prod' => $prod]);
+        $kiosk = Kiosk::paginate(10);
+        return view('Admin.kiosk.index',['kiosk' => $kiosk]);
     }
 
     /**
@@ -57,11 +57,11 @@ class KioskController extends Controller
      */
     public function edit(string $id)
     {
-        $prod = Kiosk::find($id);
-        if (!$prod ) {
+        $kiosk = Kiosk::find($id);
+        if (!$kiosk ) {
             return redirect()->route('kiosk')->with('error', 'services not found.');
         }
-        return view('Admin.kiosk.edit',['prod' => $prod]);
+        return view('Admin.kiosk.edit',['kiosk' => $kiosk]);
     }
 
     /**
@@ -69,9 +69,9 @@ class KioskController extends Controller
      */
     public function update(ServicesRequest $request, string $id)
     {
-        $prod = Kiosk::find($id);
+        $kiosk = Kiosk::find($id);
         $input = $request->all();
-        $prod->update($input);
+        $kiosk->update($input);
         return redirect()->route('kiosk')->with('success','Updated successfully');
     }
 

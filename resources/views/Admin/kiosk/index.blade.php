@@ -43,9 +43,9 @@
 
                     <tbody>
                         @php
-                            $count = ($prod->currentPage() - 1) * $prod->perPage() + 1;
+                            $count = ($kiosk->currentPage() - 1) * $kiosk->perPage() + 1;
                         @endphp
-                        @foreach ($prod as $item)
+                        @foreach ($kiosk as $item)
                             <tr>
                                 <th scope="row">{{ $count++ }}</th>
                                 <td>{{ $item->name }}</td>
@@ -75,7 +75,7 @@
                     </tbody>
 
                 </table>
-                {{-- {!! $prod->render() !!} --}}
+                {!! $kiosk->render() !!}
             </div>
 
         </div>

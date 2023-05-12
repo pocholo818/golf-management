@@ -39,7 +39,7 @@ class AuthenticateController extends Controller
                 case 'kiosk':
                     return redirect()->route('kiosk');
                     break;
-                    case 'services':
+                    case 'service':
                     return redirect()->route('services');
                     break;
                 case 'merchandise':

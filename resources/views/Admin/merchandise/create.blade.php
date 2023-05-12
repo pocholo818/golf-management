@@ -26,7 +26,7 @@
         </div>
         <div class="">
             <label for="exampleFormControlInput1" class="form-label">Member Account ID</label>
-            <input type="number" name="account_id" class="form-control" id="exampleFormControlInput1"
+            <input type="text" name="account_id" class="form-control" id="exampleFormControlInput1"
                 value="{{ old('account_id') }}">
         </div>
         <div class="">
