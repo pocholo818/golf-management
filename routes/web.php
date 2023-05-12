@@ -86,6 +86,16 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
             Route::delete('/delete/{id}', ['as' => 'delete_merchandise', 'uses' => "MerchandiseController@destroy"]);
         });
 
+        //Kiosk
+        Route::group(['prefix' => 'kiosk'], function () {
+            Route::get('/', ['as' => 'kiosk', 'uses' => "KioskController@index"]);
+            Route::get('/create', ['as' => 'create_kiosk', 'uses' => "KioskController@create"]);
+            Route::post('/create', ['as' => 'store_kiosk', 'uses' => "KioskController@store"]);
+            Route::get('/edit/{id}', ['as' => 'edit_kiosk', 'uses' => "KioskController@edit"]);
+            Route::put('/update/{id}', ['as' => 'update_kiosk', 'uses' => "KioskController@update"]);
+            Route::delete('/delete/{id}', ['as' => 'delete_kiosk', 'uses' => "KioskController@destroy"]);
+        });
+
         Route::group(['prefix' => 'accounts'], function () {
             Route::get('/', ['as' => 'account', 'uses' => "AccountTypeController@index"]);
             Route::get('/create', ['as' => 'create_user', 'uses' => "AccountTypeController@create"]);

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Kiosk;
+use App\Http\Requests\ServicesRequest;
 
 class KioskController extends Controller
 {
@@ -12,7 +14,8 @@ class KioskController extends Controller
      */
     public function index()
     {
-        return view('Admin.kiosk.index');
+        $prod = Kiosk::paginate(10);
+        return view('Admin.kiosk.index',['prod' => $prod]);
     }
 
     /**
@@ -20,15 +23,25 @@ class KioskController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.kiosk.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ServicesRequest $request)
     {
-        //
+        $request->validated($request->all());
+
+        $user = Kiosk::create([
+            'name' => $request->get('name'),
+            'account_id' => $request->get('account_id'),
+            'total' => $request->get('total'),
+        ]);
+
+        return redirect()->route('kiosk')->with([
+            'success' => 'kiosk created!'
+        ]);
     }
 
     /**
@@ -44,15 +57,22 @@ class KioskController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $prod = Kiosk::find($id);
+        if (!$prod ) {
+            return redirect()->route('kiosk')->with('error', 'services not found.');
+        }
+        return view('Admin.kiosk.edit',['prod' => $prod]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ServicesRequest $request, string $id)
     {
-        //
+        $prod = Kiosk::find($id);
+        $input = $request->all();
+        $prod->update($input);
+        return redirect()->route('kiosk')->with('success','Updated successfully');
     }
 
     /**
@@ -60,6 +80,7 @@ class KioskController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Kiosk::destroy($id);
+        return back()->with('success','Deleted successfully');
     }
 }

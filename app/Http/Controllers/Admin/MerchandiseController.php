@@ -18,7 +18,7 @@ class MerchandiseController extends Controller
         return view('Admin.merchandise.index',['prod' => $prod]);
         // return view('Admin.merchandise.index');
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      */
