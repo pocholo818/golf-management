@@ -173,7 +173,7 @@ color: #fff;
                     @if(auth()->user()->role === "finance")
 
                     <li class="nav-item" >
-                        <a class="nav-link menu-link text-white" href="{{route('transaction')}}">
+                        <a class="nav-link menu-link text-white" href="{{route('finance')}}">
                             <i class="ri-pages-line"></i> <span data-key="t-pages">Transactions</span>
                         </a>
                     </li>

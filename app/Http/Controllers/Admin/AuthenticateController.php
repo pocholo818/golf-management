@@ -34,7 +34,7 @@ class AuthenticateController extends Controller
             $auth = auth()->user();
             switch($auth->role){
                 case 'finance':
-                    return redirect()->route('transaction');
+                    return redirect()->route('finance');
                     break;
                 case 'kiosk':
                     return redirect()->route('kiosk');

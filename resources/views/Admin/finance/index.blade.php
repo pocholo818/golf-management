@@ -6,12 +6,19 @@
                 <div>
                     <div class="row">
 
-    <div class="col-lg-12">
-        <div class="row">
-            <div class="col-10">
-                <h5 class="header mt-2">Finance</h5>
-            </div>
-        </div>
+                        <div class="col-lg-12">      
+                            <div class="row">
+                                <div class="col-10">
+                                    <h5 class="header mt-2">Finance</h5> 
+                                </div>
+                                <div class="col-2">
+                                    <a href="">
+                                        <button type="button" style="width:100%"  class="btn btn-primary">
+                                            + miscellaneous
+                                        </button>
+                                    </a>
+                                </div>
+                            </div>  
 
         <!-- Button trigger modal -->
 

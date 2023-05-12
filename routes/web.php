@@ -59,8 +59,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
             Route::get('/', ['as' => 'schedules', 'uses' => "ScheduleController@index"]);
         });
 
-        Route::group(['prefix' => 'transaction'], function () {
-            Route::get('/', ['as' => 'transaction', 'uses' => "TransactionController@index"]);
+        Route::group(['prefix' => 'finance'], function () {
+            Route::get('/', ['as' => 'finance', 'uses' => "FinanceController@index"]);
         });
 
         Route::group(['prefix' => 'services'], function () {
@@ -103,6 +103,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
 
         Route::group(['prefix' => 'invoice'], function () {
             Route::get('/', ['as' => 'admin_invoice', 'uses' => "InvoiceController@index"]);
+        });
+
+        Route::group(['prefix' => 'receipt_preview'], function () {
+            Route::get('/', ['as' => 'receipt_preview', 'uses' => "ReceiptPreviewController@index"]);
+        });
+
+        Route::group(['prefix' => 'generate_receipt'], function () {
+            Route::get('/', ['as' => 'generate_receipt', 'uses' => "GenerateReceiptController@index"]);
         });
 
     });
