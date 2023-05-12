@@ -69,10 +69,21 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
 
         Route::group(['prefix' => 'services'], function () {
             Route::get('/', ['as' => 'services', 'uses' => "ServicesController@index"]);
+            Route::get('/create', ['as' => 'create_services', 'uses' => "ServicesController@create"]);
+            Route::post('/create', ['as' => 'store_services', 'uses' => "ServicesController@store"]);
+            Route::get('/edit/{id}', ['as' => 'edit_services', 'uses' => "ServicesController@edit"]);
+            Route::put('/update/{id}', ['as' => 'update_services', 'uses' => "ServicesController@update"]);
+            Route::delete('/delete/{id}', ['as' => 'delete_services', 'uses' => "ServicesController@destroy"]);
+       
         });
 
         Route::group(['prefix' => 'merchandise'], function () {
             Route::get('/', ['as' => 'merchandise', 'uses' => "MerchandiseController@index"]);
+            Route::get('/create', ['as' => 'create_merchandise', 'uses' => "MerchandiseController@create"]);
+            Route::post('/create', ['as' => 'store_merchandise', 'uses' => "MerchandiseController@store"]);
+            Route::get('/edit/{id}', ['as' => 'edit_merchandise', 'uses' => "MerchandiseController@edit"]);
+            Route::put('/update/{id}', ['as' => 'update_merchandise', 'uses' => "MerchandiseController@update"]);
+            Route::delete('/delete/{id}', ['as' => 'delete_merchandise', 'uses' => "MerchandiseController@destroy"]);
         });
 
         Route::group(['prefix' => 'accounts'], function () {
