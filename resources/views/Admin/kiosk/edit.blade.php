@@ -19,15 +19,15 @@
             </div>
         @endif
 
-        <form action="{{ route('update_kiosk',  $kiosk->id) }}" method="post" enctype="multipart/form-data"
+        <form action="{{ route('update_kiosk',  $kiosk->bill_id) }}" method="post" enctype="multipart/form-data"
             class="row g-3">
             {!! csrf_field() !!}
             @method('PUT')
 
             <div class="">
                 <label for="exampleFormControlInput1" class="form-label">Member Name</label>
-                <input type="text" name="name" class="form-control" id="exampleFormControlInput1"
-                    value="{{ $kiosk->name }}">
+                <input type="text" name="member_name" class="form-control" id="exampleFormControlInput1"
+                    value="{{ $kiosk->member_name }}">
             </div>
             <div class="">
                 <label for="exampleFormControlInput1" class="form-label">Member Account ID</label>

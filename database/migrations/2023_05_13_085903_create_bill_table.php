@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id('bill_id');
             $table->string('bill_code'); //10digits random too -- specific for bill
             $table->bigInteger('user_id')->nullable(); //for admin id (kiosk, finance, merchandiser)
-            $table->string('account_id'); //reference the member account id //the 10random digit
+            $table->string('member_name'); //reference the member account id //the 10random 
+            $table->string('account_id'); //reference the member account id //the 10random 
             $table->string('appointment_id')->nullable(); //once approved, create record in bill
             $table->string('type'); //appointment, kiosk, if customer book appointment, type = appointment, if kiosk = kiosk
             $table->decimal('total', 25, 2);

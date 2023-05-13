@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Bill;
 use App\Http\Requests\ServicesRequest;
 
+use Str;
+use Auth;
+
 class KioskController extends Controller
 {
     /**
@@ -34,10 +37,12 @@ class KioskController extends Controller
         $request->validated($request->all());
 
         $user = Bill::create([
-            'bill_code' => strtoupper(Str::random(10)),
-            'name' => $request->get('name'),
+            'bill_code' =>strtoupper(Str::random(10)),  
+            'user_id' => Auth::user()->id,
+            'member_name' => $request->get('member_name'),
             'account_id' => $request->get('account_id'),
-            'total' => $request->get('total'),
+            'type' => Auth::user()->role,
+            'total' => $request->get('total'),  
         ]);
 
         return redirect()->route('kiosk')->with([

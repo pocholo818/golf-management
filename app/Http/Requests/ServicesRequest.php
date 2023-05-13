@@ -22,7 +22,7 @@ class ServicesRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
+            'member_name' => ['required'],
             'account_id' => ['required'],
             'total' => ['required'],         
         ];
