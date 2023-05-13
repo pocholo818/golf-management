@@ -13,9 +13,9 @@ class CourseController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    { 
+    {
         $courses = Course::paginate(10);
-        return view('Admin.course.index',['courses' => $courses]);
+        return view('Admin.course.index', ['courses' => $courses]);
         // return view('Admin.Course.course');
     }
 
@@ -32,16 +32,16 @@ class CourseController extends Controller
      */
     public function store(CourseRequest $request)
     {
+
         $photo = $request->file('photo');
 
-        if($request->hasFile('photo')){
+        if ($request->hasFile('photo')) {
             $filenameWithExt = $photo->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $photo->getClientOriginalExtension();
-            $image = $filename.'_'.time().'.'.$extension;
+            $image = $filename . '_' . time() . '.' . $extension;
             $path = $photo->move('public/course', $image);
-
-        }else{
+        } else {
             $image = 'default.png';
         }
 
@@ -74,7 +74,7 @@ class CourseController extends Controller
     {
         $courses = Course::find($id);
         // dd($courses);
-        return view('Admin.course.edit',['courses' => $courses]);
+        return view('Admin.course.edit', ['courses' => $courses]);
     }
 
     /**
@@ -83,17 +83,17 @@ class CourseController extends Controller
     public function update(CourseRequest $request, string $id)
     {
         $photo = $request->file('photo');
-    
+
         if ($request->hasFile('photo')) {
             $filenameWithExt = $photo->getClientOriginalName();
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
             $extension = $photo->getClientOriginalExtension();
-            $image = $filename.'_'.time().'.'.$extension;
+            $image = $filename . '_' . time() . '.' . $extension;
             $path = $photo->move('public/course', $image);
-    
+
             $courses = Course::find($id);
             // dd($courses);
-            $old_image_path = public_path().'/public/course/'.$courses->photo;
+            $old_image_path = public_path() . '/public/course/' . $courses->photo;
             // dd($old_image_path);
             if (File::exists($old_image_path)) {
                 File::delete($old_image_path);
@@ -105,7 +105,7 @@ class CourseController extends Controller
             $courses = Course::findOrFail($id);
             $courses->update($request->except('photo'));
         }
-    
+
         return redirect()->route('course')->with('success', 'Course updated!');
     }
 
