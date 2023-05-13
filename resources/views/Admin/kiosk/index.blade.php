@@ -12,7 +12,7 @@
                 <h5 class="header mt-2">Kiosk</h5>
             </div>
             <div class="col-2">
-                <a href="{{ route('create_kiosk') }}">
+                <a href="{{ route('search_kiosk') }}">
                     <button type="button" style="width:100%"  class="btn btn-primary">
                         + Create
                     </button>

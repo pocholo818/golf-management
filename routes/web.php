@@ -85,7 +85,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
         //Kiosk
         Route::group(['prefix' => 'kiosk'], function () {
             Route::get('/', ['as' => 'kiosk', 'uses' => "KioskController@index"]);
-            Route::get('/create', ['as' => 'create_kiosk', 'uses' => "KioskController@create"]);
+            Route::get('/search', ['as' => 'search_kiosk', 'uses' => "KioskController@search"]);
+            Route::get('/create/{id}', ['as' => 'create_kiosk', 'uses' => "KioskController@create"]);
             Route::post('/create', ['as' => 'store_kiosk', 'uses' => "KioskController@store"]);
             Route::get('/edit/{id}', ['as' => 'edit_kiosk', 'uses' => "KioskController@edit"]);
             Route::put('/update/{id}', ['as' => 'update_kiosk', 'uses' => "KioskController@update"]);
