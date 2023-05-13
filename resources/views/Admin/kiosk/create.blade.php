@@ -3,11 +3,11 @@
 @section('content')
 
     <div class="modal-header">
-        <a href="{{ route('kiosk') }}">
+        <a href="{{ route('search_kiosk') }}">
             <button type="button" class="btn btn-outline-danger">Back</button>
         </a>
     </div>
-    <form action="" method="post" enctype="multipart/form-data" class="row g-3">
+    <form action="{{route('store_kiosk')}}" method="post" enctype="multipart/form-data" class="row g-3">
         {!! csrf_field() !!}
 
         @if ($errors->any())
@@ -22,12 +22,12 @@
         <div class="">
             <label for="exampleFormControlInput1" class="form-label">Member Name</label>
             <input type="text" name="member_name" class="form-control" id="exampleFormControlInput1"
-                value="{{ old('member_name') }}">
+                value="{{ $kiosk->first_name }} {{ $kiosk->last_name }}" readonly>
         </div>
         <div class="">
             <label for="exampleFormControlInput1" class="form-label">Member Account ID</label>
             <input type="text" name="account_id" class="form-control" id="exampleFormControlInput1"
-                value="{{ old('account_id') }}">
+                value="{{ $kiosk->account_code }}" readonly>
         </div>
         <div class="">
             <label for="exampleFormControlInput1" class="form-label">Total</label>
