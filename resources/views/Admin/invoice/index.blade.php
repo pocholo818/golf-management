@@ -32,10 +32,9 @@
                 <table class="table" style="text-align: center">
                     <thead >
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Member Name</th>
-                            <th scope="col">Member ID</th>
                             <th scope="col">Invoice ID</th>
+                            <th scope="col">Member ID</th>
+                            <th scope="col">Member Name</th>      
                             <th scope="col">Total</th>
                             <th scope="col">Status</th>
                             <th scope="col">Action</th>
