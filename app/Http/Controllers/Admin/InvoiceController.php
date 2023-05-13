@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Members;
+use App\Models\Bill;
+use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
@@ -13,6 +16,41 @@ class InvoiceController extends Controller
     public function index()
     {
         return view('Admin.invoice.index');
+    }
+
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('account_code');
+        $from = $request->input('from');
+        $to = $request->input('to');
+    
+        // Search in the title and body columns from the posts table
+        $bill = Bill::query()
+            ->whereDate('created_at', '>=', $from)
+            ->whereDate('created_at',  '<=', $to)
+            ->where('account_id', 'LIKE', "%{$search}%")
+            // ->sum('total')
+            // ->where('account_code', 'LIKE', "%{$search}%")
+
+            
+            // ->where('customer_id', 'LIKE', "%{$search}%")
+            // ->orWhere('first_name', 'LIKE', "%{$search}%")
+            // ->orWhere('last_name', 'LIKE', "%{$search}%")
+            // ->orWhere('account_code', 'LIKE', "%{$search}%")
+            ->get();
+        
+        $sum = Bill::query()
+            ->whereDate('created_at', '>=', $from)
+            ->whereDate('created_at',  '<=', $to)
+            ->where('account_id', 'LIKE', "%{$search}%")
+            ->sum('total');
+
+        if(!$search){
+            $bill = '';
+        }
+    
+        // Return the search view with the resluts compacted
+        return view('Admin.invoice.create', compact('bill'), compact('sum'));
     }
 
     /**
