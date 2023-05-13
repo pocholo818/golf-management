@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Kiosk;
+use App\Models\Bill;
 use App\Http\Requests\ServicesRequest;
 
 class KioskController extends Controller
@@ -14,7 +14,7 @@ class KioskController extends Controller
      */
     public function index()
     {
-        $kiosk = Kiosk::paginate(10);
+        $kiosk = Bill::paginate(10);
         return view('Admin.kiosk.index',['kiosk' => $kiosk]);
     }
 
@@ -33,7 +33,8 @@ class KioskController extends Controller
     {
         $request->validated($request->all());
 
-        $user = Kiosk::create([
+        $user = Bill::create([
+            'bill_code' => strtoupper(Str::random(10)),
             'name' => $request->get('name'),
             'account_id' => $request->get('account_id'),
             'total' => $request->get('total'),
@@ -57,7 +58,7 @@ class KioskController extends Controller
      */
     public function edit(string $id)
     {
-        $kiosk = Kiosk::find($id);
+        $kiosk = Bill::find($id);
         if (!$kiosk ) {
             return redirect()->route('kiosk')->with('error', 'services not found.');
         }
@@ -69,7 +70,7 @@ class KioskController extends Controller
      */
     public function update(ServicesRequest $request, string $id)
     {
-        $kiosk = Kiosk::find($id);
+        $kiosk = Bill::find($id);
         $input = $request->all();
         $kiosk->update($input);
         return redirect()->route('kiosk')->with('success','Updated successfully');
@@ -80,7 +81,7 @@ class KioskController extends Controller
      */
     public function destroy(string $id)
     {
-        Kiosk::destroy($id);
+        Bill::destroy($id);
         return back()->with('success','Deleted successfully');
     }
 }

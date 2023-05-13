@@ -24,7 +24,7 @@
   </div>
 <br>
   <div class="form-group">
-    <label for="inputAddress">User ID:</label>
+    <label for="inputAddress">Member ID:</label>
     <input type="text" class="form-control" id="inputAddress">
   </div>
   <div class="buttons" style="margin-top: 5%;">
