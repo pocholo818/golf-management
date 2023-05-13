@@ -4,21 +4,24 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Merchandise;
+use App\Models\Bill;
 use App\Http\Requests\ServicesRequest;
+
+use Str;
+use Auth;
 
 class MerchandiseController extends Controller
 {
-     /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $prod = Merchandise::paginate(10);
-        return view('Admin.merchandise.index',['prod' => $prod]);
-        // return view('Admin.merchandise.index');
+        $prod = Bill::where('type','merchandise')
+        ->paginate(10);
+        return view('Admin.merchandise.index',['prod' => $prod ]);
     }
- 
+
     /**
      * Show the form for creating a new resource.
      */
@@ -34,14 +37,17 @@ class MerchandiseController extends Controller
     {
         $request->validated($request->all());
 
-        $user = Merchandise::create([
-            'name' => $request->get('name'),
+        $user = Bill::create([
+            'bill_code' =>strtoupper(Str::random(10)),  
+            'user_id' => Auth::user()->id,
+            'member_name' => $request->get('member_name'),
             'account_id' => $request->get('account_id'),
-            'total' => $request->get('total'),
+            'type' => Auth::user()->role,
+            'total' => $request->get('total'),  
         ]);
 
         return redirect()->route('merchandise')->with([
-            'success' => 'Merchandise created!'
+            'success' => 'merchandise created!'
         ]);
     }
 
@@ -58,11 +64,11 @@ class MerchandiseController extends Controller
      */
     public function edit(string $id)
     {
-        $prod = Merchandise::find($id);
-        if (!$prod ) {
-            return redirect()->route('services')->with('error', 'services not found.');
+        $prod  = Bill::find($id);
+        if (!$prod  ) {
+            return redirect()->route('merchandise')->with('error', 'merchandise not found.');
         }
-        return view('Admin.merchandise.edit',['prod' => $prod]);
+        return view('Admin.merchandise.edit',['prod' => $prod ]);
     }
 
     /**
@@ -70,9 +76,9 @@ class MerchandiseController extends Controller
      */
     public function update(ServicesRequest $request, string $id)
     {
-        $prod = Merchandise::find($id);
+        $prod  = Bill::find($id);
         $input = $request->all();
-        $prod->update($input);
+        $prod ->update($input);
         return redirect()->route('merchandise')->with('success','Updated successfully');
     }
 
@@ -81,7 +87,7 @@ class MerchandiseController extends Controller
      */
     public function destroy(string $id)
     {
-        Merchandise::destroy($id);
+        Bill::destroy($id);
         return back()->with('success','Deleted successfully');
     }
 }

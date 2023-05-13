@@ -48,23 +48,23 @@
                         @foreach ($prod as $item)
                             <tr>
                                 <th scope="row">{{ $count++ }}</th>
-                                <td>{{ $item->name }}</td>
+                                <td>{{ $item->member_name }}</td>
                                 <td>{{ $item->account_id }}</td>
                                 <td>{{ $item->total }}</td>
                                 <td>{{ $item->remarks }}</td>
                                 <td>
-                                    <a href="{{ route('edit_merchandise', $item->id) }}">
+                                    <a href="{{ route('edit_merchandise', $item->bill_id) }}">
                                         <button type="button" class="btn btn-primary">
                                             Edit
                                         </button>
                                     </a>
-                                    <a href="{{ route('delete_merchandise', $item->id) }}"
-                                        onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this member?')){document.getElementById('delete-form-{{ $item->id }}').submit();}">
+                                    <a href="{{ route('delete_merchandise', $item->bill_id) }}"
+                                        onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this member?')){document.getElementById('delete-form-{{ $item->bill_id }}').submit();}">
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </a>
 
-                                    <form id="delete-form-{{ $item->id }}"
-                                        action="{{ route('delete_merchandise', $item->id) }}" method="post"
+                                    <form id="delete-form-{{ $item->bill_id }}"
+                                        action="{{ route('delete_merchandise', $item->bill_id) }}" method="post"
                                         style="display: none;">
                                         @csrf
                                         @method('DELETE')

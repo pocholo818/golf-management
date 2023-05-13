@@ -103,15 +103,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
 
         Route::group(['prefix' => 'invoice'], function () {
             Route::get('/', ['as' => 'admin_invoice', 'uses' => "InvoiceController@index"]);
+            Route::get('/create', ['as' => 'create_invoice', 'uses' => "InvoiceController@create"]);
+            Route::get('/preview', ['as' => 'receipt_preview', 'uses' => "InvoiceController@preview"]);
+            Route::get('/generate', ['as' => 'generate_receipt', 'uses' => "InvoiceController@generate"]);
         });
 
-        Route::group(['prefix' => 'receipt_preview'], function () {
-            Route::get('/', ['as' => 'receipt_preview', 'uses' => "ReceiptPreviewController@index"]);
-        });
-
-        Route::group(['prefix' => 'generate_receipt'], function () {
-            Route::get('/', ['as' => 'generate_receipt', 'uses' => "GenerateReceiptController@index"]);
-        });
 
     });
 });

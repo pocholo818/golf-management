@@ -12,7 +12,7 @@
                 <h5 class="header mt-2">Invoice</h5>
             </div>
             <div class="col-2">
-                <a href="{{ route('receipt_preview') }}">
+                <a href="{{ route('create_invoice') }}">
                     <button type="button" style="width:100%"  class="btn btn-primary">
                         + Generate invoice
                     </button>

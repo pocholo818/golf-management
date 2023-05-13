@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\ServicesRequest;
-use App\Models\Services;
+use App\Models\Bill;
+
+use Str;
+use Auth;
 
 class ServicesController extends Controller
 {
@@ -14,7 +17,8 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $service = Services::paginate(10);
+        $service = Bill::where('type','service')
+                    ->paginate(10);
         return view('Admin.services.index',['service' => $service]);
     }
 
@@ -33,14 +37,17 @@ class ServicesController extends Controller
     {
         $request->validated($request->all());
 
-        $user = Services::create([
-            'name' => $request->get('name'),
+        $user = Bill::create([
+            'bill_code' =>strtoupper(Str::random(10)),  
+            'user_id' => Auth::user()->id,
+            'member_name' => $request->get('member_name'),
             'account_id' => $request->get('account_id'),
-            'total' => $request->get('total'),
+            'type' => Auth::user()->role,
+            'total' => $request->get('total'),  
         ]);
 
         return redirect()->route('services')->with([
-            'success' => 'Services created!'
+            'success' => 'services created!'
         ]);
     }
 
@@ -57,7 +64,7 @@ class ServicesController extends Controller
      */
     public function edit(string $id)
     {
-        $service = Services::find($id);
+        $service = Bill::find($id);
         if (!$service ) {
             return redirect()->route('services')->with('error', 'services not found.');
         }
@@ -69,7 +76,7 @@ class ServicesController extends Controller
      */
     public function update(ServicesRequest $request, string $id)
     {
-        $service = Services::find($id);
+        $service = Bill::find($id);
         $input = $request->all();
         $service->update($input);
         return redirect()->route('services')->with('success','Updated successfully');
@@ -80,7 +87,7 @@ class ServicesController extends Controller
      */
     public function destroy(string $id)
     {
-        Services::destroy($id);
+        Bill::destroy($id);
         return back()->with('success','Deleted successfully');
     }
 }

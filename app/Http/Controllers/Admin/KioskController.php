@@ -17,7 +17,8 @@ class KioskController extends Controller
      */
     public function index()
     {
-        $kiosk = Bill::paginate(10);
+        $kiosk = Bill::where('type','kiosk')
+                        ->paginate(10);
         return view('Admin.kiosk.index',['kiosk' => $kiosk]);
     }
 

@@ -18,14 +18,14 @@
         <div class="row">
           <div class="col-xl-8">
             <ul class="list-unstyled">
-              <li class="text-muted">Bill To: <span style="color:#5d9fc5 ;"></span></li>
-              <li class="text-muted">Buyer Name: </li>
-              <li class="text-muted">Buyer Address:</li>
+              <li class="text-muted">Member ID: <span style="color:#5d9fc5 ;"></span></li>
+              <li class="text-muted">Member Name: </li>
+              {{-- <li class="text-muted">Buyer Address:</li>
               <li class="text-muted">Buyer Contact Number: <span>123-456-789</span> </li>
-              <li class="text-muted">Buyer Email Address:  </li>
+              <li class="text-muted">Buyer Email Address:  </li> --}}
             </ul>
           </div>
-          <div class="col-xl-4">
+          {{-- <div class="col-xl-4">
             <ul class="list-unstyled">
               <li class="text-muted"><i class="fas fa-circle" style="color:#15a302 ;"></i> <span
                   class="fw-bold">Invoice Number:</span>#123-456</li>
@@ -34,7 +34,7 @@
             <li class="text-muted"><i class="fas fa-circle" style="color:#15a302 ;"></i> <span
               class="fw-bold">Payment Due: </span>Jun 23,2021</li>
         </ul>
-          </div>
+          </div> --}}
         </div>
 
         <div class="row my-2 mx-1">

@@ -20,7 +20,17 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.invoice.create');
+    }
+
+    public function preview()
+    {
+        return view('Admin.receipt_preview.index');
+    }
+
+    public function generate()
+    {
+        return view('Admin.generate_receipt.index');
     }
 
     /**
