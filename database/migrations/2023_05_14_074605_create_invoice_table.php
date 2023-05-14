@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('invoice', function (Blueprint $table) {
             $table->id('invoice_id');
-            $table->integer('customer_id');
-            // $table->string('member_name');
+            $table->string('invoice_number');
+            $table->string('customer_id');
+            $table->string('member_name')->nullable();
             $table->decimal('total', 25, 2);
-            $table->string('status')->default('pending');
+            $table->string('status')->default('unpaid');
             $table->timestamps();
         });
     }

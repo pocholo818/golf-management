@@ -29,9 +29,9 @@
   </div>
   <div class="buttons" style="margin-top: 5%;">
     <div class="row justify-content-end">
-      <div class="col-md-2">
+      {{-- <div class="col-md-2">
             <button type="submit" class="btn btn-secondary col-md-12">Search</button>
-        </div>
+        </div> --}}
       <div class="col-md-2">
 
         <a href="{{ route('admin_invoice') }}">
@@ -40,18 +40,21 @@
       </div>
 
       <div class="col-md-2">
-        <a href="{{ route('receipt_preview') }}">
-          <button type="button" class="btn btn-primary col-md-12">Generate Report</button>
-        </a>
+          <button type="submit" class="btn btn-primary col-md-12">Generate Report</button>
       </div>
     </div>
   </div>
 
-  @if($_GET)
+
+</div>
+</form>
+    @endsection
+
+      {{-- @if($_GET)
         @if($bill)
             @foreach ($bill as $data)
             <div class="post-list">
-                <h2>{{ $data->member_name }} ({{ $data->total }}) - {{ $data->created_at }}</h2>
+                <h2>{{ $data->member_name }} {{$data->type}} ({{ $data->total }}) - {{ $data->created_at }}</h2>
             </div>
             @endforeach
             <div class="post-list">
@@ -63,7 +66,4 @@
             </div>
         @endif
     @endif 
-  
-</div>
-</form>
-    @endsection
+   --}}

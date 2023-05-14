@@ -12,8 +12,9 @@ class Invoice extends Model
     protected $table='Invoice';
     protected $primaryKey = 'invoice_id';
     protected $fillable = [
+        'invoice_number',
         'customer_id',
-     // 'member_name',
+        'member_name',
         'total', 25, 2,
         'status',
        
