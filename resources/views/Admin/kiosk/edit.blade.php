@@ -27,17 +27,17 @@
             <div class="">
                 <label for="exampleFormControlInput1" class="form-label">Member Name</label>
                 <input type="text" name="member_name" class="form-control" id="exampleFormControlInput1"
-                    value="{{ $kiosk->member_name }}">
+                    value="{{ $kiosk->member_name }}" readonly>
             </div>
             <div class="">
                 <label for="exampleFormControlInput1" class="form-label">Member Account ID</label>
                 <input type="text" name="account_id" class="form-control" id="exampleFormControlInput1"
-                    value="{{ $kiosk->account_id }}">
+                    value="{{ $kiosk->account_id }}" readonly>
             </div>
             <div class="">
                 <label for="exampleFormControlInput1" class="form-label">Total</label>
                 <input type="number" name="total" class="form-control" id="exampleFormControlInput1"
-                    value="{{ $kiosk->total }}">
+                    value="{{ $kiosk->total }}" >
             </div>
 
             <div class="modal-footer">

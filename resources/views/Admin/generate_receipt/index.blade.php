@@ -12,7 +12,7 @@
           <form action="{{ route('store_invoice') }}" method="POST">
             @csrf
 
-          <p style="color: #7e8d9f;font-size: 20px;">Invoice >> <strong>ID: {{ $randomString }} </strong></p>
+          <p style="color: #7e8d9f;font-size: 20px;">Invoice >> <strong>No: {{ $randomString }} </strong></p>
 
         </div>
         <hr>

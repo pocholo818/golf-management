@@ -3,11 +3,11 @@
 @section('content')
 
     <div class="modal-header">
-        <a href="{{ route('kiosk') }}">
+        <a href="{{ route('merchandise') }}">
             <button type="button" class="btn btn-outline-danger">Back</button>
         </a>
     </div>
-    <form action="{{ route('search_kiosk') }}" method="get" enctype="multipart/form-data" class="row g-3">
+    <form action="{{ route('search_merchandise') }}" method="get" enctype="multipart/form-data" class="row g-3">
         <div class="">
             <label for="exampleFormControlInput1" class="form-label">Search Member Name/Account ID</label>
             <input type="text" name="search" class="form-control">

@@ -24,6 +24,12 @@ class KioskController extends Controller
         return view('Admin.kiosk.index',['kiosk' => $kiosk]);
     }
 
+    public function find()
+    {
+        return view('Admin.kiosk.search');
+    }
+
+
     public function search(Request $request){
         // Get the search value from the request
         $search = $request->input('search');
@@ -41,17 +47,18 @@ class KioskController extends Controller
         }
     
         // Return the search view with the resluts compacted
-        return view('Admin.kiosk.search', compact('customer'));
+        return redirect()->route('create_kiosk')->with(compact('customer'));
+        // return view('Admin.kiosk.search', compact('customer'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(string $id)
+    public function create(Request $request)
     {
-        $kiosk = Members::where('account_code',$id)->first();
-
-        return view('Admin.kiosk.create',['kiosk' => $kiosk]);
+        // $kiosk = Members::where('account_code',$id)->first();
+        $customer = $request->session()->get('customer');
+        return view('Admin.kiosk.create', compact('customer'));
     }
 
     /**

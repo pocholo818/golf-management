@@ -61,6 +61,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
 
         Route::group(['prefix' => 'finance'], function () {
             Route::get('/', ['as' => 'finance', 'uses' => "FinanceController@index"]);
+            Route::get('/search', ['as' => 'search_finance', 'uses' => "FinanceController@search"]);
+            Route::get('/find', ['as' => 'search_kiosk_finance', 'uses' => "FinanceController@find"]);
             Route::get('/create', ['as' => 'create_finance', 'uses' => "FinanceController@create"]);
             Route::post('/create', ['as' => 'store_finance', 'uses' => "FinanceController@store"]);
             Route::get('/edit/{id}', ['as' => 'edit_finance', 'uses' => "FinanceController@edit"]);
@@ -70,6 +72,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
 
         Route::group(['prefix' => 'services'], function () {
             Route::get('/', ['as' => 'services', 'uses' => "ServicesController@index"]);
+            Route::get('/search', ['as' => 'search_services', 'uses' => "ServicesController@search"]);
+            Route::get('/find', ['as' => 'search_kiosk_services', 'uses' => "ServicesController@find"]);
             Route::get('/create', ['as' => 'create_services', 'uses' => "ServicesController@create"]);
             Route::post('/create', ['as' => 'store_services', 'uses' => "ServicesController@store"]);
             Route::get('/edit/{id}', ['as' => 'edit_services', 'uses' => "ServicesController@edit"]);
@@ -79,6 +83,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
 
         Route::group(['prefix' => 'merchandise'], function () {
             Route::get('/', ['as' => 'merchandise', 'uses' => "MerchandiseController@index"]);
+            Route::get('/search', ['as' => 'search_merchandise', 'uses' => "MerchandiseController@search"]);
+            Route::get('/find', ['as' => 'search_kiosk_merchandise', 'uses' => "MerchandiseController@find"]);
             Route::get('/create', ['as' => 'create_merchandise', 'uses' => "MerchandiseController@create"]);
             Route::post('/create', ['as' => 'store_merchandise', 'uses' => "MerchandiseController@store"]);
             Route::get('/edit/{id}', ['as' => 'edit_merchandise', 'uses' => "MerchandiseController@edit"]);
@@ -90,7 +96,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
         Route::group(['prefix' => 'kiosk'], function () {
             Route::get('/', ['as' => 'kiosk', 'uses' => "KioskController@index"]);
             Route::get('/search', ['as' => 'search_kiosk', 'uses' => "KioskController@search"]);
-            Route::get('/create/{id}', ['as' => 'create_kiosk', 'uses' => "KioskController@create"]);
+            Route::get('/find', ['as' => 'search_kiosk_member', 'uses' => "KioskController@find"]);
+            Route::get('/create', ['as' => 'create_kiosk', 'uses' => "KioskController@create"]);
             Route::post('/create', ['as' => 'store_kiosk', 'uses' => "KioskController@store"]);
             Route::get('/edit/{id}', ['as' => 'edit_kiosk', 'uses' => "KioskController@edit"]);
             Route::put('/update/{id}', ['as' => 'update_kiosk', 'uses' => "KioskController@update"]);

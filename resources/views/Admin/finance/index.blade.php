@@ -12,7 +12,7 @@
                                 <h5 class="header mt-2">Finance</h5>
                             </div>
                             <div class="col-2">
-                                <a href="{{ route('create_finance') }}">
+                                <a href="{{ route('search_kiosk_finance') }}">
                                     <button type="button" style="width:100%" class="btn btn-primary">
                                         + Miscellaneous
                                     </button>
@@ -36,8 +36,8 @@
                                             <th scope="col">Member Name</th>
                                             <th scope="col">Member Account ID</th>
                                             <th scope="col">Total</th>
-                                            <th scope="col">Remarks</th>
-                                            {{-- <th scope="col">Action</th> --}}
+                                            {{-- <th scope="col">Remarks</th> --}}
+                                            <th scope="col">Action</th>
                                         </tr>
                                     </thead>
 
@@ -51,7 +51,7 @@
                                                 <td>{{ $item->member_name }}</td>
                                                 <td>{{ $item->account_id }}</td>
                                                 <td>{{ $item->total }}</td>
-                                                <td>{{ $item->remarks }}</td>
+                                                {{-- <td>{{ $item->remarks }}</td> --}}
                                                 <td>
                                                     <a href="{{ route('edit_finance', $item->bill_id) }}">
                                                         <button type="button" class="btn btn-primary">

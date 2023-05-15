@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Bill;
+use App\Models\Members;
 use App\Http\Requests\ServicesRequest;
 
 use Str;
@@ -22,12 +23,40 @@ class MerchandiseController extends Controller
         return view('Admin.merchandise.index',['prod' => $prod ]);
     }
 
+    public function find()
+    {
+        return view('Admin.merchandise.search');
+    }
+
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+    
+        // Search in the title and body columns from the posts table
+        $customer = Members::query()
+            ->where('customer_id', 'LIKE', "%{$search}%")
+            ->orWhere('first_name', 'LIKE', "%{$search}%")
+            ->orWhere('last_name', 'LIKE', "%{$search}%")
+            ->orWhere('account_code', 'LIKE', "%{$search}%")
+            ->first();
+        
+        if(!$search){
+            $customer = '';
+        }
+    
+        // Return the search view with the resluts compacted
+        return redirect()->route('create_merchandise')->with(compact('customer'));
+        // return view('Admin.kiosk.search', compact('customer'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('Admin.merchandise.create');
+        // $kiosk = Members::where('account_code',$id)->first();
+        $customer = $request->session()->get('customer');
+        return view('Admin.merchandise.create', compact('customer'));
     }
 
     /**
