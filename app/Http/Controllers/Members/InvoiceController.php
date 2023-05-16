@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Members;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Members;
+use App\Models\Invoice;
 
 class InvoiceController extends Controller
 {
@@ -12,7 +14,9 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        return view('Members.Invoice.index_invoice');
+      $invoice = Invoice::where('customer_id',auth('member')->user()->account_code)->get();
+    //   dd($invoice);
+        return view('Members.invoice.index',['invoice'=>$invoice]);
     }
 
     /**
