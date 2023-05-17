@@ -15,6 +15,8 @@ class Invoice extends Model
         'invoice_number',
         'customer_id',
         'member_name',
+        'type',
+        'amount',
         'total', 25, 2,
         'status',
        

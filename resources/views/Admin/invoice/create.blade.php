@@ -35,12 +35,12 @@
       <div class="col-md-2">
 
         <a href="{{ route('admin_invoice') }}">
-          <button type="button" class="btn btn-danger col-md-12">Discard</button>
+          <button type="button" class="btn btn-danger col-md-12">Back</button>
         </a>
       </div>
 
       <div class="col-md-2">
-          <button type="submit" class="btn btn-primary col-md-12">Generate Report</button>
+          <button type="submit" class="btn btn-primary col-md-12">Generate </button>
       </div>
     </div>
   </div>

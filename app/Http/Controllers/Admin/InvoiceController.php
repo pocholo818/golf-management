@@ -75,58 +75,55 @@ class InvoiceController extends Controller
             });
         }
     
-        return view('Admin.receipt_preview.index', compact('bill', 'sum', 'uniqueMembers'));
+        return view('Admin.invoice.receipt_preview', compact('bill', 'sum', 'uniqueMembers'));
     }
     
-    
 
-    public function generate(Request $request, $account_id, $sum)
+    public function generate(Request $request, $id)
     {
-        // Generate random combination of uppercase letters and numbers
-        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-        $length = 10;
-        $randomString = '';
-
-        for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, strlen($characters) - 1)];
-        }
-
-        $randomString = strtoupper($randomString);
-
-        // Retrieve the bill using the provided parameters
-        $bill = Bill::where('account_id', $account_id)
-            ->get();
-    
-        $uniqueMembers = collect([]);
-    
-        if ($bill->count() > 0) {
-            $uniqueMembers = $bill->unique('member_name');
-        }
-    
-        return view('Admin.generate_receipt.index', compact('bill', 'sum', 'uniqueMembers', 'randomString'));
+        // dd($request->session()->all());
+        $member = Invoice::findOrFail($id);
+        // dd($member);
+         return view('Admin.invoice.generate_receipt', ['member' => $member]);
     }
     
     
-    
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
+        // Generate random combination of uppercase letters and numbers
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $length = 10;
+        $randomString = '';
+        
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+        
+        $randomString = strtoupper($randomString);
+                   
+        $types = $request->get('type');
+        $amounts = $request->get('amount');
+        
         $member = Invoice::create([
-
-            'invoice_number' => $request->get('invoice_number'),  
+            'invoice_number' => $randomString,  
             'customer_id' => $request->get('customer_id'),
             'member_name' => $request->get('member_name'),
+            'type' => implode(', ', $types),
+            'amount' => implode(', ', $amounts),
             'total' => $request->get('total'), 
-
         ]);
-        $member->save();
-        return redirect()->route('admin_invoice')->with([
-            'success' => 'Invoice created!'
-        ]);
+    
+        // Retrieve the primary key (id) of the created Invoice
+        $invoiceId = $member->invoice_id;
+        // dd($invoiceId);
+        return redirect()->route('generate_receipt', ['id' => $invoiceId]);
     }
+    
+    
+
 
     public function accept(string $id)
     {

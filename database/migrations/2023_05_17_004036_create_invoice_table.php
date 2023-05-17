@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('type')->nullable();
             $table->string('amount')->nullable();
             $table->decimal('total', 25, 2);
+            $table->string('remarks')->nullable();
             $table->string('status')->default('unpaid');
             $table->timestamps();
         });

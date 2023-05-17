@@ -40,12 +40,27 @@ class InvoiceController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $invoice = Invoice::find($id);
+
+        if (!$invoice) {
+            return redirect()->route('invoice')->with('error', 'invoice not found.');
+        }
+        return view('Members.invoice.show',['invoice' => $invoice]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
+
+     
+   public function payment(string $id)
+    {
+        $request = Invoice::find($id);
+        $request->status = 'paid';
+        $request->save();
+        return redirect()->route('invoice')->with('success', 'updated successfully.');
+    }
+
     public function edit(string $id)
     {
         //

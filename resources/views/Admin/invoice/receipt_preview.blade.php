@@ -116,7 +116,8 @@
                 <button type="button" class="btn btn-danger text-capitalize">back</button>
               </a>
 
-              @php
+
+              {{-- @php
               $individualBill = $bill->first();
           @endphp
           
@@ -124,11 +125,24 @@
               <a href="{{ route('generate_receipt', ['account_id' => $individualBill->account_id, 'sum' => $sum]) }}" class="mr-2">
                   <button type="button" class="btn btn-primary text-capitalize" style="background-color:#15a302;">Generate</button>
               </a>
-          @endif
-          
-          
-          
-                
+          @endif --}}
+             
+<form action="{{ route('store_invoice') }}" method="POST">
+  @csrf
+  @if ($bill)
+  @foreach ($bill as $data)
+          {{-- <input type="hidden" name="invoice_number" value="{{ $randomString }}"> --}}
+          <input type="hidden" name="customer_id" value="{{ $data->account_id }}">
+          <input type="hidden" name="member_name" value="{{ $data->member_name }}">
+          <input type="hidden" name="type[]" value="{{ $data->type }}">
+          <input type="hidden" name="amount[]" value="{{ $data->total }}">
+          <input type="hidden" name="total" value="{{ $sum }}">
+          @endforeach
+     @endif      
+              <button type="submit" class="btn btn-primary text-capitalize" style="background-color:#15a302; ">Generate</button>
+
+</form>
+
             </div>
           </div>
 

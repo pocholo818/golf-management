@@ -118,7 +118,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin',], function () {
             Route::get('/search', ['as' => 'search_invoice', 'uses' => "InvoiceController@search"]);            
             Route::get('/create', ['as' => 'create_invoice', 'uses' => "InvoiceController@create"]);
             Route::get('/preview', ['as' => 'receipt_preview', 'uses' => "InvoiceController@preview"]);
-            Route::get('/generate/{account_id}/{sum}', ['as' => 'generate_receipt', 'uses' => "InvoiceController@generate"]);
+            Route::get('/generate/{id}', ['as' => 'generate_receipt', 'uses' => "InvoiceController@generate"]);
             Route::post('/store', ['as' => 'store_invoice', 'uses' => "InvoiceController@store"]);
             Route::put('/accept/{id}', ['as' => 'accept_payment', 'uses' => "InvoiceController@accept"]);
         });
@@ -152,6 +152,8 @@ Route::group(['prefix' => 'member', 'namespace' => 'Members'], function () {
 
         Route::group(['prefix' => 'invoice'], function () {
             Route::get('/', ['as' => 'invoice', 'uses' => "InvoiceController@index"]);
+            Route::get('/show/{id}', ['as' => 'show_invoice', 'uses' => "InvoiceController@show"]);
+            Route::get('/payment/{id}', ['as' => 'payment', 'uses' => "InvoiceController@payment"]);
         });
 
         Route::group(['prefix' => 'profile'], function () {

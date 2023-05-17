@@ -24,7 +24,7 @@
                     <th scope="col">Member</th>
                     <th scope="col">Total</th>
                     <th scope="col">Status</th>
-                    {{-- <th scope="col">Action</th> --}}
+                    <th scope="col">Detail</th>
                 </tr>
             </thead>
 
@@ -37,38 +37,16 @@
                         <td>{{ $item->member_name }}</td>
                         <td>{{ $item->total }}</td>
                         <td>{{ $item->status }}</td>
-                        {{-- <td>
+                        <td>
 
-                            @if ($item->status == 'Accepted')
-                                <button type="button" class="btn btn-outline-success"
-                                    style="width: 100%" disabled>Accepted</button>
-                            @elseif($item->status == 'Declined')
-                                <button type="button" class="btn btn-outline-danger"
-                                    style="width: 100%" disabled>Declined</button>
-                            @else
-                                <a href="{{ route('appointment-edit', $item->app_id) }}">
+                                <a href="{{ route('show_invoice', $item->invoice_id) }}">
                                     <button type="button" class="btn btn-primary"
                                         style="width: 48%">
-                                        Edit
+                                        View
                                     </button>
                                 </a>
 
-                                <a href="{{ route('appointment-delete', $item->app_id) }}"
-                                    onclick="event.preventDefault(); if(confirm('Are you sure you want to remove this appointment?')){document.getElementById('delete-form-{{ $item->app_id }}').submit();}">
-                                    <button type="submit" class="btn btn-danger"
-                                        style="width: 48%">Delete</button>
-                                </a>
-
-                                <form id="delete-form-{{ $item->app_id }}"
-                                    action="{{ route('appointment-delete', $item->app_id) }}"
-                                    method="post" style="display: none;">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                            @endif
-
-
-                        </td> --}}
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
