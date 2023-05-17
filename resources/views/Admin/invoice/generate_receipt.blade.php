@@ -30,7 +30,7 @@
                   <span style="display: inline-block; width: 120px;">Member Name:</span>{{ $member->member_name }}
               </li>
               <li class="text-muted">
-                  <span style="display: inline-block; width: 120px;">Date:</span>{{ $member->created_at }}
+                  <span style="display: inline-block; width: 120px;">Date:</span>{{ $member->created_at->format('F d, Y') }}
               </li>
               {{-- @endforeach --}}
 
