@@ -13,16 +13,18 @@ return new class extends Migration
     {
         Schema::create('appointment', function (Blueprint $table) {
             $table->id('app_id');
-            $table->text('name');
-            $table->text('capacity');
+            $table->string('name');
+            $table->string('member_name');
+            $table->string('account_code');
+            $table->string('capacity');
             $table->integer('user_id');
-            $table->text('date');
-            $table->text('time');
-            $table->text('guests');
-            $table->text('status')->default('Pending');
+            $table->string('date');
+            $table->string('time');
+            $table->string('guests');
+            $table->string('price');
+            $table->string('type')->default('appointment');
+            $table->string('status')->default('Pending');
             $table->timestamps();
-            // $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            // $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
         });
     }
 

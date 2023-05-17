@@ -36,7 +36,7 @@
                                             <th scope="col">Member Name</th>
                                             <th scope="col">Member Account ID</th>
                                             <th scope="col">Total</th>
-                                            {{-- <th scope="col">Remarks</th> --}}
+                                            <th scope="col">Remarks</th>
                                             <th scope="col">Action</th>
                                         </tr>
                                     </thead>
@@ -51,7 +51,7 @@
                                                 <td>{{ $item->member_name }}</td>
                                                 <td>{{ $item->account_id }}</td>
                                                 <td>{{ $item->total }}</td>
-                                                {{-- <td>{{ $item->remarks }}</td> --}}
+                                                <td>{{ $item->remarks }}</td>
                                                 <td>
                                                     <a href="{{ route('edit_finance', $item->bill_id) }}">
                                                         <button type="button" class="btn btn-primary">

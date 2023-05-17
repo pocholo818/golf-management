@@ -40,6 +40,11 @@
                     value="{{ $kiosk->total }}" >
             </div>
 
+            <div class="">
+                <label for="exampleFormControlInput1" class="form-label">Remarks</label>
+                <input type="text" name="remarks" class="form-control" id="exampleFormControlInput1"
+                    value="{{ $kiosk->remarks }}" >
+            </div>
             <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
                 <button type="submit" class="btn btn-success w-100">Update</button>

@@ -76,6 +76,7 @@ class FinanceController extends Controller
             'account_id' => $request->get('account_id'),
             'type' => Auth::user()->role,
             'total' => $request->get('total'),
+            'remarks' => $request->get('remarks'),
         ]);
 
         return redirect()->route('finance')->with([

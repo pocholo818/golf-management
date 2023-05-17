@@ -46,9 +46,12 @@ class AppointmentController extends Controller
             $appt = Appointment::create([
                 'name' => $request->name,
                 'capacity' => $request->capacity,
+                'account_code' => auth('member')->user()->account_code,
+                'member_name' => auth('member')->user()->first_name . ' ' . auth('member')->user()->last_name,
                 'date' => $request->date,
                 'time' => $request->time,
                 'guests' => $request->guests,
+                'price' => $request->price,
                 'user_id' => auth('member')->user()->customer_id,
                 'status' => $request->status,
             ]);

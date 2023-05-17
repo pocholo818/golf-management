@@ -13,5 +13,6 @@ class Kiosk extends Model
         'name', 
         'account_id', 
         'total', 
+        'remarks',
     ];
 }

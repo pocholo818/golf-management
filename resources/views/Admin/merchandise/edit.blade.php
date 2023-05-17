@@ -39,10 +39,12 @@
                 <input type="number" name="total" class="form-control" id="exampleFormControlInput1"
                     value="{{ $prod->total }}">
             </div>
-            {{-- <div class="">
-                    <label for="formFile" class="form-label">Password</label>
-                    <input type="password" name="password" step="any" class="form-control" >
-                </div> --}}
+            <div class="">
+
+                <label for="exampleFormControlInput1" class="form-label">Remarks</label>
+                <input type="text" name="remarks" class="form-control" id="exampleFormControlInput1"
+                    value="{{ $prod->remarks }}">
+            </div>
 
             <div class="modal-footer">
                 <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->

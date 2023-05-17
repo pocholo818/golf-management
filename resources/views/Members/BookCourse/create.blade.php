@@ -49,6 +49,7 @@
                         <input class="form-control mt" type="text" name="name" value="{{$courses->name}}" readonly hidden>
                         <label for="inputState" style="padding-left: 20px">Capacity {{$courses->capacity}}</label>
                         <input class="form-control mt" type="number" name="capacity" value="{{$courses->capacity}}" readonly  hidden>
+                        <input class="form-control mt" type="number" name="price" value="{{$courses->price}}" readonly  hidden>
                     </div>
                     {{-- <div class="row" style="margin-top: 5px">
                     <div class="col-md-6" style="margin-top: 10px">

@@ -17,6 +17,9 @@ class Appointment extends Model
         'date', 
         'time',
         'guests',
+        'account_code',
+        'member_name',
+        'price',
     ];
 
     public function customer(){

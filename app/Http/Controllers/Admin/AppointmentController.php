@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\BookCourse;
 use App\Models\Appointment;
 use App\Models\Customer;
+use App\Models\Bill;
 use App\Http\Requests\AppointmentRequest;
 use Illuminate\Support\Facades\DB;
+use Str;
+use Auth;
 
 class AppointmentController extends Controller
 {
@@ -58,11 +61,23 @@ class AppointmentController extends Controller
      */
     public function accept(string $id)
     {
-        $request = Appointment::find($id);
-        $request->status = 'Accepted';
-        $request->save();
-        return back()->with('success', 'updated successfully.');
+        $appointment = Appointment::find($id);
+        $appointment->status = 'Accepted';
+        $appointment->save();
+    
+        $bill = Bill::create([
+            'bill_code' => strtoupper(Str::random(10)),
+            'user_id' => Auth::user()->id,
+            'member_name' => $appointment->member_name,
+            'account_id' => $appointment->account_code,
+            'type' => 'appointment',
+            'total' => $appointment->price,
+            'remarks' => $appointment->remarks,
+        ]);
+    
+        return back()->with('success', 'Updated successfully.');
     }
+    
 
     /**
      * Update the specified resource in storage.

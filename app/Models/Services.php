@@ -13,5 +13,6 @@ class Services extends Model
         'name', 
         'account_id', 
         'total', 
+        'remarks',
     ];
 }

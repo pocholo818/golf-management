@@ -37,7 +37,11 @@
             <input type="number" name="total" class="form-control" id="exampleFormControlInput1"
                 value="{{ old('total') }}">
         </div>
- 
+        <div class="">
+            <label for="exampleFormControlInput1" class="form-label">Remarks</label>
+            <input type="text" name="remarks" class="form-control" id="exampleFormControlInput1"
+                value="{{ old('remarks') }}">
+        </div>
         @else 
 <div>
     <h2>No customer found</h2>

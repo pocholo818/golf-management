@@ -13,5 +13,6 @@ class Finance extends Model
         'name',
         'account_id',
         'total',
+        'remarks',
     ];
 }
